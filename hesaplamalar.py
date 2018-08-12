@@ -24,7 +24,7 @@ def not_coz(veri: str) -> [float, None]:
         return 1.50
     elif veri[:2] == "DD":
         return 1.00
-    elif veri[:2] == "FF" or veri[:2] == "VF":
+    elif veri[:2] == "FF" or veri[:2] == "VF" or veri[:2] == "BL" or veri[:2] == "BZ":
         return 0.00
     else:
         return None

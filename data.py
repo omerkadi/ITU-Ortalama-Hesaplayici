@@ -649,8 +649,8 @@ Search
 </td>
 <td class="pldefault"><p class="rightaligntext">
 </p><div class="staticheaders">
-090130127 Ömer F. Kadı<br>
-Jul 31, 2018 05:03 pm<br>
+090150727 Sevim Şenacay<br>
+Aug 11, 2018 10:42 pm<br>
 </div>
 </td>
 </tr>
@@ -667,48 +667,48 @@ Jul 31, 2018 05:03 pm<br>
 <tbody><tr>
 <td>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" bordercolor="#000000">
-<tbody><tr><td class="default"><img src="http://resimler.sis.itu.edu.tr/090/13/0127.jpg" height="100"></td>
+<tbody><tr><td class="default"><img src="http://resimler.sis.itu.edu.tr/090/15/0727.jpg" height="100"></td>
 </tr><tr>
 <td width="150"><font face="ARIAL" size="2" color="#013C5B"><b>Ögrenci No</b></font></td>
-<td width="225"><font face="ARIAL" size="2" color="#013C5B">:&nbsp;090130127</font></td>
+<td width="225"><font face="ARIAL" size="2" color="#013C5B">:&nbsp;090150727</font></td>
 <td width="150"><font face="ARIAL" size="2" color="#013C5B"><b>TC Kimlik No</b></font></td>
-<td width="225"><font face="ARIAL" size="2" color="#013C5B">:&nbsp;28727436582</font></td>
+<td width="225"><font face="ARIAL" size="2" color="#013C5B">:&nbsp;36115658522</font></td>
 </tr>
 <tr>
 <td><font face="ARIAL" size="2" color="#013C5B"><b>Soyadi</b></font></td>
-<td><font face="ARIAL" size="2" color="#013C5B">:&nbsp;Kadı</font></td>
+<td><font face="ARIAL" size="2" color="#013C5B">:&nbsp;Şenacay</font></td>
 <td><font face="ARIAL" size="2" color="#013C5B"><b>Seviye</b></font></td>
 <td><font face="ARIAL" size="2" color="#013C5B">:&nbsp;Lisans</font></td>
 </tr>
 <tr>
 <td><font face="ARIAL" size="2" color="#013C5B"><b>Adi</b></font></td>
-<td><font face="ARIAL" size="2" color="#013C5B">:&nbsp;Ömer Faruk</font></td>
+<td><font face="ARIAL" size="2" color="#013C5B">:&nbsp;Sevim </font></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td><font face="ARIAL" size="2" color="#013C5B"><b>Dogum Yeri</b></font></td>
-<td><font face="ARIAL" size="2" color="#013C5B">:&nbsp;Büyükorhan</font></td>
+<td><font face="ARIAL" size="2" color="#013C5B">:&nbsp;Bayrampaşa</font></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td><font face="ARIAL" size="2" color="#013C5B"><b>Dogum Tarihi</b></font></td>
-<td><font face="ARIAL" size="2" color="#013C5B">:&nbsp;04-01-1995</font></td>
+<td><font face="ARIAL" size="2" color="#013C5B">:&nbsp;30-06-1995</font></td>
 <td><font face="ARIAL" size="2" color="#013C5B"><b>Kayit Tarihi</b></font></td>
-<td><font face="ARIAL" size="2" color="#013C5B">:&nbsp;02-09-2013</font></td>
+<td><font face="ARIAL" size="2" color="#013C5B">:&nbsp;04-09-2015</font></td>
 </tr>
 <tr>
 <td><font face="ARIAL" size="2" color="#013C5B"><b>Baba Adi</b></font></td>
-<td><font face="ARIAL" size="2" color="#013C5B">:&nbsp;Osman</font></td>
+<td><font face="ARIAL" size="2" color="#013C5B">:&nbsp;Gürkan</font></td>
 <td><font face="ARIAL" size="2" color="#013C5B"><b>Kayit Tipi</b></font></td>
-<td><font face="ARIAL" size="2" color="#013C5B">:&nbsp;Standart ÖSS</font></td>
+<td><font face="ARIAL" size="2" color="#013C5B">:&nbsp;Merkezi Y.P.Dış Yatay Geçiş</font></td>
 </tr>
 </tbody></table>
 <br>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" bordercolor="#000000">
 <tbody><tr>
-<td colspan="2" bgcolor="lightgray"><b><font face="ARIAL" size="2" color="#013C5B">2015-2016 / Bahar</font></b></td>
+<td colspan="2" bgcolor="lightgray"><b><font face="ARIAL" size="2" color="#013C5B">2015-2016 / Güz</font></b></td>
 </tr>
 <tr>
 <td valign="top" width="400">
@@ -723,7 +723,7 @@ Jul 31, 2018 05:03 pm<br>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BIL 101E</font></td>
 <td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Int to Comp and Inf Systems</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   1.50&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">M *</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF *</font></td>
 </tr>
 <tr>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 110</font></td>
@@ -735,31 +735,25 @@ Jul 31, 2018 05:03 pm<br>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 113</font></td>
 <td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Mekanik</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   4.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">AA </font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF *</font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 113EL</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Mechanics Laboratory</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   1.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CC </font></td>
 </tr>
 <tr>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">ING 101</font></td>
 <td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">English I</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">VF *</font></td>
-</tr>
-<tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">KIM 101E</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">General Chemistry I</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BB </font></td>
-</tr>
-<tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">KIM 101EL</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">General Chemistry I Lab</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   1.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">AA </font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CC </font></td>
 </tr>
 <tr>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">MAT 101</font></td>
 <td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Matematik I</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   5.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">AA </font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF *</font></td>
 </tr>
 </tbody></table>
 </td>
@@ -778,19 +772,111 @@ Jul 31, 2018 05:03 pm<br>
 </tr>
 <tr>
 <td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Dönem</b></font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  18.50</font></td>
 <td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  15.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  17.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  53.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 3.12</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   5.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  15.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  12.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 0.77</font></td>
 </tr>
 <tr>
 <td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Toplam</b></font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  18.50</font></td>
 <td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  15.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  17.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  53.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 3.12</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   5.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  15.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  12.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 0.77</font></td>
+</tr>
+<tr>
+<td width="100"><font face="ARIAL" size="2" color="#013C5B"><b>Akd. Durum</b></font></td>
+<td colspan="5" width="250"><font face="ARIAL" size="2" color="#013C5B">Gözetim Listesi</font></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="lightgray"><b><font face="ARIAL" size="2" color="#013C5B">2015-2016 / Bahar</font></b></td>
+</tr>
+<tr>
+<td valign="top" width="400">
+<table border="0" cellspacing="0" cellpadding="0" bordercolor="#000000" width="100%">
+<tbody><tr>
+<td width="75" nowrap=""><b><font face="ARIAL" size="2" color="#013C5B">Ders Kodu</font></b></td>
+<td width="255"><b><font face="ARIAL" size="2" color="#013C5B">Ders Adi</font></b></td>
+<td width="35" nowrap="" align="right"><b><font face="ARIAL" size="2" color="#013C5B">Kredi&nbsp;</font></b></td>
+<td width="35" nowrap=""><b><font face="ARIAL" size="2" color="#013C5B">Not</font></b></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">ALM 102</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Almanca II (Kredisiz)</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   0.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BZ </font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BIL 101E</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Int to Comp and Inf Systems</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   1.50&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CC </font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 113</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Mekanik</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   4.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">DD </font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 114EL</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Continous Media Laboratory</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   1.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CB </font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">KIM 101E</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">General Chemistry I</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CC </font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">MAT 101</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Matematik I</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   5.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CC </font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">RUS 101</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Rusça I</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   0.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BL </font></td>
+</tr>
+</tbody></table>
+</td>
+<td valign="top" width="350" align="right">
+<table width="350" border="0" cellspacing="0" cellpadding="0" bordercolor="#000000">
+<tbody><tr>
+<td width="100"></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"><b>A.Krd.</b></font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"><b>B.Krd.</b></font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"><b>O.K.Krd.</b></font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"><b>B.Puan</b></font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"><b>Ort.</b></font></td>
+</tr>
+<tr>
+<td colspan="6"><font face="ARIAL" size="2" color="#013C5B"><b>Fizik Mühendisliği</b></font></td>
+</tr>
+<tr>
+<td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Dönem</b></font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  14.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  14.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  14.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  25.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 1.76</font></td>
+</tr>
+<tr>
+<td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Toplam</b></font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  30.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  19.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  19.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  37.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 1.92</font></td>
 </tr>
 <tr>
 <td width="100"><font face="ARIAL" size="2" color="#013C5B"><b>Akd. Durum</b></font></td>
@@ -815,19 +901,19 @@ Jul 31, 2018 05:03 pm<br>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BIL 106E</font></td>
 <td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Intr to Sci&amp;Eng Comp (Fortran)</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">AA </font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">DD </font></td>
 </tr>
 <tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 292E</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Computer Aided Dsgn &amp; Modellng</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   2.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">AA </font></td>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">ING 102</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">English II</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CC </font></td>
 </tr>
 <tr>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">MAT 102</font></td>
 <td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Matematik II</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   5.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">DC *</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF *</font></td>
 </tr>
 </tbody></table>
 </td>
@@ -846,23 +932,23 @@ Jul 31, 2018 05:03 pm<br>
 </tr>
 <tr>
 <td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Dönem</b></font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  10.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  10.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  10.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  27.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 2.75</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  11.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   6.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  11.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   9.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 0.82</font></td>
 </tr>
 <tr>
 <td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Toplam</b></font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  28.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  41.00</font></td>
 <td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  25.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  27.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  80.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 2.98</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  30.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  46.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 1.52</font></td>
 </tr>
 <tr>
 <td width="100"><font face="ARIAL" size="2" color="#013C5B"><b>Akd. Durum</b></font></td>
-<td colspan="5" width="250"><font face="ARIAL" size="2" color="#013C5B">İyi Durum</font></td>
+<td colspan="5" width="250"><font face="ARIAL" size="2" color="#013C5B">Gözetim Listesi</font></td>
 </tr>
 </tbody></table>
 </td>
@@ -883,48 +969,48 @@ Jul 31, 2018 05:03 pm<br>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">ATA 101</font></td>
 <td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Atatürk İlk &amp; İnkılap Trh I</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   2.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CB </font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BEB 101</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Temel Yüzme Becerisi Öğrenimi</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   0.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BZ *</font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 213</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Elektrik ve Manyetizma</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   4.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">DD *</font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 233E</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Electronics I</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
 <td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">DC </font></td>
 </tr>
 <tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 113EL</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Mechanics Laboratory</font></td>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 233EL</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Electronics I Lab.</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   1.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">AA </font></td>
-</tr>
-<tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 114</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Sürekli Ortamlar Fiziği</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CB </font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF *</font></td>
 </tr>
 <tr>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 241E</font></td>
 <td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Symblc &amp; Numrc Tchnqs in Physc</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   2.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF *</font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">KIM 101EL</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">General Chemistry I Lab</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   1.00&nbsp;</font></td>
 <td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">AA </font></td>
 </tr>
 <tr>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">MAT 102</font></td>
 <td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Matematik II</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   5.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BA </font></td>
-</tr>
-<tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">MAT 201</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Diferansiyel Denklemler</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   4.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF *</font></td>
-</tr>
-<tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">MAT 281</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Lineer Cebir ve Uygulamaları</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF *</font></td>
-</tr>
-<tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">TUR 101</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Türk Dili I</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   2.00&nbsp;</font></td>
 <td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF *</font></td>
 </tr>
 </tbody></table>
@@ -944,23 +1030,23 @@ Jul 31, 2018 05:03 pm<br>
 </tr>
 <tr>
 <td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Dönem</b></font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  22.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  13.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  22.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  40.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 1.82</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  18.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  10.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  18.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  17.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 0.97</font></td>
 </tr>
 <tr>
 <td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Toplam</b></font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  50.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  33.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  44.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 113.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 2.57</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  59.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  35.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  43.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  64.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 1.47</font></td>
 </tr>
 <tr>
 <td width="100"><font face="ARIAL" size="2" color="#013C5B"><b>Akd. Durum</b></font></td>
-<td colspan="5" width="250"><font face="ARIAL" size="2" color="#013C5B">İyi Durum</font></td>
+<td colspan="5" width="250"><font face="ARIAL" size="2" color="#013C5B">Gözetim Listesi</font></td>
 </tr>
 </tbody></table>
 </td>
@@ -978,22 +1064,34 @@ Jul 31, 2018 05:03 pm<br>
 <td width="35" nowrap=""><b><font face="ARIAL" size="2" color="#013C5B">Not</font></b></td>
 </tr>
 <tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 114EL</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Continous Media Laboratory</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   1.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BA </font></td>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BEB 101</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Temel Yüzme Becerisi Öğrenimi</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   0.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">VF </font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">DNK 201E</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Dynamics</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">DC </font></td>
 </tr>
 <tr>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 213E</font></td>
 <td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Electricity and Magnetism</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   4.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">DD </font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">DC </font></td>
 </tr>
 <tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">ING 101</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">English I</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">VF *</font></td>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 213EL</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Electricity &amp; Magnetism Lab.</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   1.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BA </font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 292E</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Computer Aided Dsgn &amp; Modellng</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   2.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">AA </font></td>
 </tr>
 <tr>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">ITB 218</font></td>
@@ -1002,9 +1100,9 @@ Jul 31, 2018 05:03 pm<br>
 <td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CB </font></td>
 </tr>
 <tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">MAT 201</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Diferansiyel Denklemler</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   4.00&nbsp;</font></td>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">MAT 102</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Matematik II</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   5.00&nbsp;</font></td>
 <td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF *</font></td>
 </tr>
 </tbody></table>
@@ -1024,23 +1122,23 @@ Jul 31, 2018 05:03 pm<br>
 </tr>
 <tr>
 <td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Dönem</b></font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  15.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   8.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  15.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  15.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 1.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  18.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  13.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  18.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  29.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 1.64</font></td>
 </tr>
 <tr>
 <td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Toplam</b></font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  65.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  41.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  52.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 128.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 2.46</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  77.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  44.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  52.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  89.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 1.70</font></td>
 </tr>
 <tr>
 <td width="100"><font face="ARIAL" size="2" color="#013C5B"><b>Akd. Durum</b></font></td>
-<td colspan="5" width="250"><font face="ARIAL" size="2" color="#013C5B">İyi Durum</font></td>
+<td colspan="5" width="250"><font face="ARIAL" size="2" color="#013C5B">Gözetim Listesi</font></td>
 </tr>
 </tbody></table>
 </td>
@@ -1058,16 +1156,22 @@ Jul 31, 2018 05:03 pm<br>
 <td width="35" nowrap=""><b><font face="ARIAL" size="2" color="#013C5B">Not</font></b></td>
 </tr>
 <tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">ING 101</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">English I</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BA </font></td>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">ATA 102</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Atatürk İlk &amp; İnkılap Trh II</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   2.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CB </font></td>
 </tr>
 <tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">MAT 201</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Diferansiyel Denklemler</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   4.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">DD *</font></td>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 241E</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Symblc &amp; Numrc Tchnqs in Physc</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   2.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">DC </font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">MAT 102</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Matematik II</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   5.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BB </font></td>
 </tr>
 </tbody></table>
 </td>
@@ -1086,19 +1190,19 @@ Jul 31, 2018 05:03 pm<br>
 </tr>
 <tr>
 <td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Dönem</b></font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   7.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   7.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   7.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  14.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 2.07</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   9.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   9.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   9.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  23.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 2.56</font></td>
 </tr>
 <tr>
 <td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Toplam</b></font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  72.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  48.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  52.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 142.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 2.74</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  86.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  53.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  54.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 112.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 2.06</font></td>
 </tr>
 <tr>
 <td width="100"><font face="ARIAL" size="2" color="#013C5B"><b>Akd. Durum</b></font></td>
@@ -1120,34 +1224,22 @@ Jul 31, 2018 05:03 pm<br>
 <td width="35" nowrap=""><b><font face="ARIAL" size="2" color="#013C5B">Not</font></b></td>
 </tr>
 <tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BEB 114</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Futsal Temel Beceri Eğitim</font></td>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BEB 116</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Badminton Temel Beceri Eğitimi</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   0.00&nbsp;</font></td>
 <td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">VF </font></td>
 </tr>
 <tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BIL 100E</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Intr.to Prog.Language(PYTHON)</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   2.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BA </font></td>
-</tr>
-<tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 214</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Dalgalar Fiziği</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   4.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">VF *</font></td>
-</tr>
-<tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 233E</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Electronics I</font></td>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 114</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Sürekli Ortamlar Fiziği</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">DD </font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF *</font></td>
 </tr>
 <tr>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 233EL</font></td>
 <td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Electronics I Lab.</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   1.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BA </font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BB </font></td>
 </tr>
 <tr>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 284</font></td>
@@ -1159,19 +1251,19 @@ Jul 31, 2018 05:03 pm<br>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">MAT 210</font></td>
 <td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Mühendislik Matematiği</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   4.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CB </font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">DD </font></td>
 </tr>
 <tr>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">MAT 261</font></td>
 <td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Lineer Cebir</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CC </font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">DD </font></td>
 </tr>
 <tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">TUR 101</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Türk Dili I</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   2.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CC </font></td>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">MAT 335E</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Programming Algorithms</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF </font></td>
 </tr>
 </tbody></table>
 </td>
@@ -1190,23 +1282,23 @@ Jul 31, 2018 05:03 pm<br>
 </tr>
 <tr>
 <td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Dönem</b></font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  22.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  15.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  22.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  33.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 1.52</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  17.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   8.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  17.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  10.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 0.59</font></td>
 </tr>
 <tr>
 <td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Toplam</b></font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  94.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  58.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  65.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 172.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 2.65</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 103.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  61.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  70.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 122.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 1.74</font></td>
 </tr>
 <tr>
 <td width="100"><font face="ARIAL" size="2" color="#013C5B"><b>Akd. Durum</b></font></td>
-<td colspan="5" width="250"><font face="ARIAL" size="2" color="#013C5B">İyi Durum</font></td>
+<td colspan="5" width="250"><font face="ARIAL" size="2" color="#013C5B">Gözetim Listesi</font></td>
 </tr>
 </tbody></table>
 </td>
@@ -1224,34 +1316,40 @@ Jul 31, 2018 05:03 pm<br>
 <td width="35" nowrap=""><b><font face="ARIAL" size="2" color="#013C5B">Not</font></b></td>
 </tr>
 <tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">ATA 102</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Atatürk İlk &amp; İnkılap Trh II</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   2.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF </font></td>
-</tr>
-<tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 213EL</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Electricity &amp; Magnetism Lab.</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   1.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF </font></td>
-</tr>
-<tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 214E</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Physics  of Wave</font></td>
-<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   4.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">VF </font></td>
-</tr>
-<tr>
-<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 272E</font></td>
-<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Computatnl Methods in Physics</font></td>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 114</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Sürekli Ortamlar Fiziği</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
-<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF </font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">DC </font></td>
 </tr>
 <tr>
 <td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 284E</font></td>
 <td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Classical Mechanics I</font></td>
 <td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF </font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 321E</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Mathematical Mthds in Physc I</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   4.00&nbsp;</font></td>
 <td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">VF </font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 374E</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Methods of Experim.Physics I</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FF *</font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 443E</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Solar Energy Physics &amp;Tech. I</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BA </font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">TUR 102</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Türk Dili II</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   2.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CB </font></td>
 </tr>
 </tbody></table>
 </td>
@@ -1270,23 +1368,91 @@ Jul 31, 2018 05:03 pm<br>
 </tr>
 <tr>
 <td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Dönem</b></font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  13.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   0.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  13.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   0.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 0.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  18.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   8.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  18.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  20.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 1.11</font></td>
 </tr>
 <tr>
 <td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Toplam</b></font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 107.50</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  58.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  71.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 172.00</font></td>
-<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 2.42</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 121.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  69.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  82.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 142.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 1.73</font></td>
 </tr>
 <tr>
 <td width="100"><font face="ARIAL" size="2" color="#013C5B"><b>Akd. Durum</b></font></td>
-<td colspan="5" width="250"><font face="ARIAL" size="2" color="#013C5B">İyi Durum</font></td>
+<td colspan="5" width="250"><font face="ARIAL" size="2" color="#013C5B">Gözetim Listesi</font></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="lightgray"><b><font face="ARIAL" size="2" color="#013C5B">2017-2018 / Yaz Öğretimi</font></b></td>
+</tr>
+<tr>
+<td valign="top" width="400">
+<table border="0" cellspacing="0" cellpadding="0" bordercolor="#000000" width="100%">
+<tbody><tr>
+<td width="75" nowrap=""><b><font face="ARIAL" size="2" color="#013C5B">Ders Kodu</font></b></td>
+<td width="255"><b><font face="ARIAL" size="2" color="#013C5B">Ders Adi</font></b></td>
+<td width="35" nowrap="" align="right"><b><font face="ARIAL" size="2" color="#013C5B">Kredi&nbsp;</font></b></td>
+<td width="35" nowrap=""><b><font face="ARIAL" size="2" color="#013C5B">Not</font></b></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 272E</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Computatnl Methods in Physics</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BB </font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 374E</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Methods of Experim.Physics I</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   3.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">CC </font></td>
+</tr>
+<tr>
+<td width="75" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">FIZ 374EL</font></td>
+<td width="255" valign="top"><font face="ARIAL" size="2" color="#013C5B">Methods of Exp. Physics Lab.</font></td>
+<td width="35" nowrap="" align="right" valign="top"><font face="ARIAL" size="2" color="#013C5B">   1.00&nbsp;</font></td>
+<td width="35" nowrap="" valign="top"><font face="ARIAL" size="2" color="#013C5B">BA </font></td>
+</tr>
+</tbody></table>
+</td>
+<td valign="top" width="350" align="right">
+<table width="350" border="0" cellspacing="0" cellpadding="0" bordercolor="#000000">
+<tbody><tr>
+<td width="100"></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"><b>A.Krd.</b></font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"><b>B.Krd.</b></font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"><b>O.K.Krd.</b></font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"><b>B.Puan</b></font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"><b>Ort.</b></font></td>
+</tr>
+<tr>
+<td colspan="6"><font face="ARIAL" size="2" color="#013C5B"><b>Fizik Mühendisliği</b></font></td>
+</tr>
+<tr>
+<td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Dönem</b></font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   7.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   7.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">   7.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  18.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 2.64</font></td>
+</tr>
+<tr>
+<td width="50"><font face="ARIAL" size="2" color="#013C5B"><b>Toplam</b></font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 128.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  76.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B">  86.50</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 161.00</font></td>
+<td width="50" align="right"><font face="ARIAL" size="2" color="#013C5B"> 1.86</font></td>
+</tr>
+<tr>
+<td width="100"><font face="ARIAL" size="2" color="#013C5B"><b>Akd. Durum</b></font></td>
+<td colspan="5" width="250"><font face="ARIAL" size="2" color="#013C5B"></font></td>
 </tr>
 </tbody></table>
 </td>
@@ -1295,7 +1461,7 @@ Jul 31, 2018 05:03 pm<br>
 <td align="center"><font face="ARIAL" size="2" color="#013C5B">**Belge Sonu**</font></td>
 </tr>
 <tr>
-<td align="right"><font face="ARIAL" size="2" color="#013C5B">Belge Tarihi:31-07-2018</font></td>
+<td align="right"><font face="ARIAL" size="2" color="#013C5B">Belge Tarihi:11-08-2018</font></td>
 </tr>
 </tbody></table>
 
@@ -1320,4 +1486,3 @@ Jul 31, 2018 05:03 pm<br>
 
 </td></tr></tbody></table></div></body></html>
 """
-

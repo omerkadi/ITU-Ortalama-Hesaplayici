@@ -18,6 +18,7 @@ class CustomWindow(Ui_MainWindow):
         self.current_season_data = []
         self.number_of_courses = 0
         self.seasons_index = []
+        self.yasak_row_number = 0
 
     def setupUi(self, MainWindow):
         super().setupUi(MainWindow)
@@ -40,6 +41,7 @@ class CustomWindow(Ui_MainWindow):
                                self.set_egitim_donemi_cbox)
         QtCore.QObject.connect(self.add, QtCore.SIGNAL("clicked()"), self.add_lesson)
         QtCore.QObject.connect(self.season_select, QtCore.SIGNAL("clicked()"), self.set_current_season_data)
+        QtCore.QObject.connect(self.ders_cikar, QtCore.SIGNAL("clicked()"), self.delete_course)
 
     def read_ders_kodu_cbox(self):
         return self.ders_kodu_cbox.currentText()
@@ -95,7 +97,7 @@ class CustomWindow(Ui_MainWindow):
 
     def set_egitim_donemi_cbox(self):
         self.egitim_donemi_cbox.clear()
-        seasons = ["Güz", "Bahar", "Yaz Öğretimi"]
+        seasons = ["Güz", "Bahar", "YazÖğretimi"]
         egitim_yili = self.egitim_yili_cbox.currentText()
         last_year = str(self.last_season_data[0][0]) + "-" + str(self.last_season_data[0][1])
 
@@ -112,6 +114,15 @@ class CustomWindow(Ui_MainWindow):
         self.current_season_data = [year_data, donem_data]
         self.add_season_table(self.current_season_data)
         self.data_lesson_table[self.convert_to_string_season_data(self.current_season_data)] = []
+
+    def set_rows_header(self):
+        course_counter = 1
+        for i in range(self.lesson_table.rowCount()):
+            item = self.lesson_table.takeVerticalHeaderItem(i)
+            if item.text() != "":
+                item.setText(str(course_counter))
+                course_counter += 1
+            self.lesson_table.setVerticalHeaderItem(i, item)
 
     def add_lesson_table(self, dersler, user_edit=False):
         for ders in dersler:
@@ -181,7 +192,7 @@ class CustomWindow(Ui_MainWindow):
         current_year = self.last_season_data[0]
         years = []
 
-        if self.last_season_data[1] != "Yaz Öğretimi":
+        if self.last_season_data[1] != "YazÖğretimi":
             first_ind = 0
         else:
             first_ind = 1
@@ -194,6 +205,7 @@ class CustomWindow(Ui_MainWindow):
         for donem, donem_dersleri in self.data_lesson_table.items():
             self.add_season_table(transcript.parse_season_name(donem))
             self.add_lesson_table(donem_dersleri)
+        self.yasak_row_number = self.number_of_courses + len(self.data_lesson_table) - 1
 
     def convert_to_string_season_data(self, season_data):
         return str(season_data[0][0]) + "-" + str(season_data[0][0]) + " / " + season_data[1]
@@ -216,6 +228,37 @@ class CustomWindow(Ui_MainWindow):
                     self.lesson_table.setItem(i + course_number, 3, item)
                     return True
         return False
+
+    def delete_course(self, current_row=None):
+        if current_row is None:
+            current_row = self.lesson_table.currentRow()
+
+        if current_row > self.yasak_row_number:
+            course_data = dict(self.data_lesson_table)
+            counter = -1
+            for season, courses in self.data_lesson_table.items():
+                counter += 1
+                if counter == current_row:
+                    for i in range(len(self.data_lesson_table[season])):
+                        self.lesson_table.removeRow(counter+1)
+                        self.number_of_courses -= 1
+                        if season == self.convert_to_string_season_data(self.current_season_data):
+                            self.current_season_data = []
+                    course_data.pop(season)
+                for i in range(len(courses)):
+                    counter += 1
+                    if counter == current_row:
+                        course_data[season].pop(i)
+                        self.number_of_courses -= 1
+
+            self.lesson_table.removeRow(current_row)
+            self.data_lesson_table = course_data
+            self.set_rows_header()
+        else:
+            msg_box = QtWidgets.QMessageBox()
+            msg_box.setText("Bu Satırı Kaldıramzsınız")
+            msg_box.setStandardButtons(QtWidgets.QMessageBox.Ok)
+            msg_box.exec_()
 
 
 if __name__ == "__main__":
