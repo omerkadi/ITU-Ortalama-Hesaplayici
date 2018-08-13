@@ -63,7 +63,10 @@ class CustomWindow(Ui_MainWindow):
         for i in range(row_count):
             if i in self.seasons_index:
                 continue
-            ders_not = self.lesson_table.item(i, 3).text()
+            try:
+                ders_not = self.lesson_table.item(i, 3).text()
+            except AttributeError:
+                ders_not = self.lesson_table.cellWidget(i, 3).currentText()
             if ders_not[-1] == "*" or ders_not == "M " or ders_not == "T ":
                 continue
             ders_kredi = self.lesson_table.item(i, 2).text()
@@ -124,19 +127,32 @@ class CustomWindow(Ui_MainWindow):
                 course_counter += 1
             self.lesson_table.setVerticalHeaderItem(i, item)
 
+    def set_gen_not_ort_gos(self):
+        self.gen_not_ort_gos.setText(str(hesaplamalar.genel_ort_hesapla(self.read_lessons_table()))[:4])
+
     def add_lesson_table(self, dersler, user_edit=False):
         for ders in dersler:
             row_count = self.lesson_table.rowCount()
             self.lesson_table.insertRow(row_count)
             self.number_of_courses += 1
             self.lesson_table.setVerticalHeaderItem(row_count, QtWidgets.QTableWidgetItem(str(self.number_of_courses)))
-            for i, data in enumerate(ders.values()):
-                item = QtWidgets.QTableWidgetItem(data)
+            for i, ders_data in enumerate(ders.values()):
                 if (user_edit is True) and (i == 3):
-                    item.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsEditable | QtCore.Qt.ItemIsSelectable)
+                    note_combo_box = QtWidgets.QComboBox()
+                    if not int(self.lesson_table.item(self.lesson_table.rowCount()-1, 2).text()):
+                        for notlar in ["BZ", "BL"]:
+                            note_combo_box.addItem(notlar)
+                    else:
+                        for notlar in ["AA", "BA", "BB", "CB", "CC", "DC", "DD", "FF", "VF"]:
+                            note_combo_box.addItem(notlar)
+                    note_combo_box.setCurrentText(ders_data)
+                    self.lesson_table.setCellWidget(self.lesson_table.rowCount()-1, i, note_combo_box)
+                    QtCore.QObject.connect(note_combo_box, QtCore.SIGNAL("currentIndexChanged(QString)"),
+                                           self.set_gen_not_ort_gos)
                 else:
+                    item = QtWidgets.QTableWidgetItem(ders_data)
                     item.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                self.lesson_table.setItem(self.lesson_table.rowCount()-1, i, item)
+                    self.lesson_table.setItem(self.lesson_table.rowCount()-1, i, item)
 
     def add_lesson(self):
         if not self.current_season_data:
@@ -155,7 +171,7 @@ class CustomWindow(Ui_MainWindow):
             self.add_lesson_table([ders_bigi], user_edit=True)
             self.data_lesson_table[season].append(ders_bigi)
             self.check_lessen_before_added(ders_bigi)
-            self.gen_not_ort_gos.setText(str(hesaplamalar.genel_ort_hesapla(self.read_lessons_table()))[:4])
+            self.set_gen_not_ort_gos()
 
     def add_season_table(self, season_data):
         row_count = self.lesson_table.rowCount()
@@ -254,6 +270,7 @@ class CustomWindow(Ui_MainWindow):
             self.lesson_table.removeRow(current_row)
             self.data_lesson_table = course_data
             self.set_rows_header()
+            self.set_gen_not_ort_gos()
         else:
             msg_box = QtWidgets.QMessageBox()
             msg_box.setText("Bu Satırı Kaldıramzsınız")
