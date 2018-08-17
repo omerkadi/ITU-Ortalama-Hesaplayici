@@ -25,12 +25,12 @@ def parse_transcript_data(raw_transcrip_data, only_season=False, only_lessons=Fa
 
 
 def parse_season_name(season_name):
-    parsed = season_name.split("/")
+    parsed = season_name.split(" / ")
 
-    years = parsed[0].replace(" ", "").split("-")
+    years = parsed[0].split("-")
     years = [int(years[0]), int(years[1])]
 
-    season = parsed[1].replace(" ", "")
+    season = parsed[1]
     return [years, season]
 
 

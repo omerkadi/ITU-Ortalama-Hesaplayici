@@ -24,7 +24,7 @@ class CustomWindow(Ui_MainWindow):
         super().setupUi(MainWindow)
 
         self.write_transcript_table()
-        self.gen_not_ort_gos.setText(str(hesaplamalar.genel_ort_hesapla(self.read_lessons_table()))[:4])
+        self.set_seasons_ort()
         self.set_egitim_yili_cbox()
         self.set_egitim_donemi_cbox()
 
@@ -32,6 +32,7 @@ class CustomWindow(Ui_MainWindow):
             self.not_cbox.addItem(notlar)
 
         self.set_kod_sec_cbox(save_data.read_verify_departments_code())
+        self.set_gen_not_ort_gos()
 
         QtCore.QObject.connect(self.kod_sec_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
                                self.read_secilen_bolum)
@@ -57,22 +58,15 @@ class CustomWindow(Ui_MainWindow):
         self.secilecek_dersler = curriculums.parse_lessons_code(self.secilen_bolum)
         self.set_ders_kodu_cbox()
 
-    def read_lessons_table(self):
-        row_count = self.lesson_table.rowCount()
-        veri = []
-        for i in range(row_count):
-            if i in self.seasons_index.values():
-                continue
-            try:
-                ders_not = self.lesson_table.item(i, 3).text()
-            except AttributeError:
-                ders_not = self.lesson_table.cellWidget(i, 3).currentText()
-            if ders_not[-1] == "*" or ders_not == "M " or ders_not == "T ":
-                continue
-            ders_kredi = self.lesson_table.item(i, 2).text()
-            ders_veri = {"Kredi": ders_kredi, "Not": ders_not}
-            veri.append(ders_veri)
-        return veri
+    def read_courses_data(self):
+        courses_data = []
+        for couses in self.data_lesson_table.values():
+            for course in couses:
+                ders_not = course["Not"]
+                if ders_not[-1] == "*" or ders_not == "M " or ders_not == "T ":
+                    continue
+                courses_data.append({"Kredi": course["Kredi"], "Not": course["Not"]})
+        return courses_data
 
     def set_ders_no_cbox(self):
         bolum_code = self.ders_kodu_cbox.currentText()
@@ -100,7 +94,7 @@ class CustomWindow(Ui_MainWindow):
 
     def set_egitim_donemi_cbox(self):
         self.egitim_donemi_cbox.clear()
-        seasons = ["Güz", "Bahar", "YazÖğretimi"]
+        seasons = ["Güz", "Bahar", "Yaz Öğretimi"]
         egitim_yili = self.egitim_yili_cbox.currentText()
         last_year = str(self.last_season_data[0][0]) + "-" + str(self.last_season_data[0][1])
 
@@ -131,19 +125,34 @@ class CustomWindow(Ui_MainWindow):
             self.lesson_table.setVerticalHeaderItem(i, item)
 
     def set_gen_not_ort_gos(self):
-        self.gen_not_ort_gos.setText(str(hesaplamalar.genel_ort_hesapla(self.read_lessons_table()))[:4])
+        self.gen_not_ort_gos.setText(str(hesaplamalar.genel_ort_hesapla(self.read_courses_data())))
 
     def set_seasons_index(self):
         for i in range(self.lesson_table.rowCount()):
             try:
-                if self.lesson_table.item(i, 3).text() == "":
-                    season = self.lesson_table.item(i, 0).text() + " / " + self.lesson_table.item(i, 1).text()
-                    if season in self.seasons_index:
-                        self.seasons_index[season] = i
+                float(self.lesson_table.item(i, 3).text())
+                season = self.lesson_table.item(i, 0).text() + " / " + self.lesson_table.item(i, 1).text()
+                if season in self.seasons_index:
+                    self.seasons_index[season] = i
             except ValueError:
                 pass
             except AttributeError:
                 pass
+
+    def set_seasons_ort(self):
+        for name, index in self.seasons_index.items():
+            veri = []
+            for course in self.data_lesson_table[name]:
+                veri.append({"Kredi": course["Kredi"], "Not": course["Not"]})
+            hesaplama = hesaplamalar.genel_ort_hesapla(veri, kredi=True)
+
+            item = self.lesson_table.takeItem(index, 2)
+            item.setText(str(hesaplama[1]))
+            self.lesson_table.setItem(index, 2, item)
+
+            item = self.lesson_table.takeItem(index, 3)
+            item.setText(str(hesaplama[0]))
+            self.lesson_table.setItem(index, 3, item)
 
     def add_lesson_table(self, dersler, user_edit=False):
         for ders in dersler:
@@ -162,8 +171,9 @@ class CustomWindow(Ui_MainWindow):
                             note_combo_box.addItem(notlar)
                     note_combo_box.setCurrentText(ders_data)
                     self.lesson_table.setCellWidget(row_count, i, note_combo_box)
-                    QtCore.QObject.connect(note_combo_box, QtCore.SIGNAL("currentIndexChanged(QString)"),
-                                           self.set_gen_not_ort_gos)
+                    QtCore.QObject.connect(self.lesson_table.cellWidget(row_count, i),
+                                           QtCore.SIGNAL("currentIndexChanged(QString)"),
+                                           self.update_couses_data_from_note_cbox)
                 else:
                     item = QtWidgets.QTableWidgetItem(ders_data)
                     item.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
@@ -185,6 +195,7 @@ class CustomWindow(Ui_MainWindow):
             self.check_lessen_before_added(ders_bigi)
             self.set_seasons_index()
             self.set_gen_not_ort_gos()
+            self.set_seasons_ort()
 
     def add_season_table(self, season_data):
         row_count = self.lesson_table.rowCount()
@@ -221,7 +232,7 @@ class CustomWindow(Ui_MainWindow):
         current_year = self.last_season_data[0]
         years = []
 
-        if self.last_season_data[1] != "YazÖğretimi":
+        if self.last_season_data[1] != "Yaz Öğretimi":
             first_ind = 0
         else:
             first_ind = 1
@@ -300,6 +311,7 @@ class CustomWindow(Ui_MainWindow):
             self.set_rows_header()
             self.set_gen_not_ort_gos()
             self.set_seasons_index()
+            self.set_seasons_ort()
         else:
             self.create_message_box("Bu Satırı Kaldıramzsınız")
 
@@ -308,6 +320,27 @@ class CustomWindow(Ui_MainWindow):
         msg_box.setText(str(message))
         msg_box.setStandardButtons(QtWidgets.QMessageBox.Ok)
         msg_box.exec_()
+
+    def update_couses_data_from_note_cbox(self):
+        self.update_data_lesson_table()
+        self.set_gen_not_ort_gos()
+        self.set_seasons_ort()
+
+    def update_data_lesson_table(self):
+        course_counter = 0
+        season = ""
+        for i in range(self.lesson_table.rowCount()):
+            if i in self.seasons_index.values():
+                season = self.lesson_table.item(i, 0).text() + " / " + self.lesson_table.item(i, 1).text()
+                course_counter = 0
+                continue
+            try:
+                item_text = self.lesson_table.cellWidget(i, 3).currentText()
+                if item_text != self.data_lesson_table[season][course_counter]["Not"]:
+                    self.data_lesson_table[season][course_counter]["Not"] = item_text
+            except AttributeError:
+                pass
+            course_counter += 1
 
 
 if __name__ == "__main__":
