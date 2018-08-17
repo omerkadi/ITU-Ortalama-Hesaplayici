@@ -132,12 +132,17 @@ class CustomWindow(Ui_MainWindow):
             try:
                 float(self.lesson_table.item(i, 3).text())
                 season = self.lesson_table.item(i, 0).text() + " / " + self.lesson_table.item(i, 1).text()
-                if season in self.seasons_index:
-                    self.seasons_index[season] = i
+                self.seasons_index[season] = i
             except ValueError:
                 pass
             except AttributeError:
                 pass
+
+        copy_seasons_index = dict(self.seasons_index)
+        for season in self.seasons_index.keys():
+            if not season in self.data_lesson_table.keys():
+                copy_seasons_index.pop(season)
+        self.seasons_index = copy_seasons_index
 
     def set_seasons_ort(self):
         for name, index in self.seasons_index.items():
@@ -266,30 +271,29 @@ class CustomWindow(Ui_MainWindow):
         return str(season_data[0][0]) + "-" + str(season_data[0][1]) + " / " + season_data[1]
 
     def check_lessen_before_added(self, course_data):
-        course_number = 0
         if course_data["Ders Kodu"][-1] == "E":
             course_codes = [course_data["Ders Kodu"], course_data["Ders Kodu"][:-1]]
         else:
             course_codes = [course_data["Ders Kodu"], course_data["Ders Kodu"] + "E"]
 
-        for i, season_data in enumerate(self.data_lesson_table.items()):
-            for j, course in enumerate(season_data[1]):
-                course_number += 1
-                if course["Ders Kodu"] in course_codes and course["Not"][-1] != "*" and season_data[0] !=\
+        index = self.lesson_table.rowCount()-1
+        for season_data in reversed(list(self.data_lesson_table.items())):
+            for j, course in reversed(list(enumerate(season_data[1]))):
+                if course["Ders Kodu"] in course_codes and season_data[0] !=\
                         self.convert_to_string_season_data(self.current_season_data):
-                    self.data_lesson_table[season_data[0]][j]["Not"] += "*"
-                    item = self.lesson_table.takeItem(i + course_number, 3)
-                    item.setText(item.text() + "*")
-                    self.lesson_table.setItem(i + course_number, 3, item)
+                    self.update_course_note(index, course["Not"], season_data[0], j)
                     return True
+                index -= 1
+            index -= 1
         return False
 
     def delete_course(self, current_row=None):
         if current_row is None:
             current_row = self.lesson_table.currentRow()
 
+        course_data = []
         if current_row > self.yasak_row_number:
-            course_data = dict(self.data_lesson_table)
+            courses_data = dict(self.data_lesson_table)
             counter = -1
             for season, courses in self.data_lesson_table.items():
                 counter += 1
@@ -299,16 +303,18 @@ class CustomWindow(Ui_MainWindow):
                         self.number_of_courses -= 1
                         if season == self.convert_to_string_season_data(self.current_season_data):
                             self.current_season_data = []
-                    course_data.pop(season)
+                    courses_data.pop(season)
                 for i in range(len(courses)):
                     counter += 1
                     if counter == current_row:
-                        course_data[season].pop(i)
+                        course_data = courses_data[season].pop(i)
                         self.number_of_courses -= 1
 
             self.lesson_table.removeRow(current_row)
-            self.data_lesson_table = course_data
+            self.data_lesson_table = courses_data
             self.set_rows_header()
+            if not course_data == []:
+                self.check_lessen_before_added(course_data)
             self.set_gen_not_ort_gos()
             self.set_seasons_index()
             self.set_seasons_ort()
@@ -341,6 +347,32 @@ class CustomWindow(Ui_MainWindow):
             except AttributeError:
                 pass
             course_counter += 1
+
+    def update_course_note(self, table_index, note, season, season_index):
+        if note[-1] == "*":
+            new_note = note[:-1]
+            self.data_lesson_table[season][season_index]["Not"] = new_note
+            try:
+                item = self.lesson_table.takeItem(table_index, 3)
+                item.setText(new_note)
+                self.lesson_table.setItem(table_index, 3, item)
+            except AttributeError:
+                item = self.lesson_table.cellWidget(table_index, 3)
+                item.setItemText(item.currentIndex(), new_note)
+                item.setEnabled(True)
+                self.lesson_table.setCellWidget(table_index, 3, item)
+        else:
+            new_note = note + "*"
+            self.data_lesson_table[season][season_index]["Not"] = new_note
+            try:
+                item = self.lesson_table.takeItem(table_index, 3)
+                item.setText(new_note)
+                self.lesson_table.setItem(table_index, 3, item)
+            except AttributeError:
+                item = self.lesson_table.cellWidget(table_index, 3)
+                item.setItemText(item.currentIndex(), new_note)
+                item.setEnabled(False)
+                self.lesson_table.setCellWidget(table_index, 3, item)
 
 
 if __name__ == "__main__":
