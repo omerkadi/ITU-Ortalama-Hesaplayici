@@ -73,17 +73,17 @@ class CustomWindow(Ui_MainWindow):
         self.ders_no_cbox.clear()
         self.ders_no_cbox.addItem("Seç")
         if bolum_code not in ["", "Seç"]:
-            for code in self.secilecek_dersler[bolum_code]:
+            for code in sorted(set(self.secilecek_dersler[bolum_code])):
                 self.ders_no_cbox.addItem(code)
 
     def set_ders_kodu_cbox(self):
         self.ders_kodu_cbox.clear()
         self.ders_kodu_cbox.addItem("Seç")
-        for code in self.secilecek_dersler.keys():
+        for code in sorted(self.secilecek_dersler.keys()):
             self.ders_kodu_cbox.addItem(code)
 
     def set_kod_sec_cbox(self, departments: dict):
-        for code in departments.values():
+        for code in sorted(list(departments.values())):
             self.kod_sec_cbox.addItem(code)
 
     def set_egitim_yili_cbox(self):
