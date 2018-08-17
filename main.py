@@ -140,7 +140,7 @@ class CustomWindow(Ui_MainWindow):
 
         copy_seasons_index = dict(self.seasons_index)
         for season in self.seasons_index.keys():
-            if not season in self.data_lesson_table.keys():
+            if season not in self.data_lesson_table.keys():
                 copy_seasons_index.pop(season)
         self.seasons_index = copy_seasons_index
 
@@ -195,12 +195,17 @@ class CustomWindow(Ui_MainWindow):
 
             ders_bigi = self.find_lesson_data(ders_kodu + " " + ders_no)
             ders_bigi["Not"] = ders_not
+
+            if self.check_course_before_added_current_season(ders_bigi):
+                self.create_message_box("Bir Dersi Aynı Döneme İki Kere Ekleyemezsiniz")
+                return False
             self.add_lesson_table([ders_bigi], user_edit=True)
             self.data_lesson_table[season].append(ders_bigi)
             self.check_lessen_before_added(ders_bigi)
             self.set_seasons_index()
             self.set_gen_not_ort_gos()
             self.set_seasons_ort()
+        return True
 
     def add_season_table(self, season_data):
         row_count = self.lesson_table.rowCount()
@@ -285,6 +290,19 @@ class CustomWindow(Ui_MainWindow):
                     return True
                 index -= 1
             index -= 1
+        return False
+
+    def check_course_before_added_current_season(self, course_data):
+        if course_data["Ders Kodu"][-1] == "E":
+            course_codes = [course_data["Ders Kodu"], course_data["Ders Kodu"][:-1]]
+        else:
+            course_codes = [course_data["Ders Kodu"], course_data["Ders Kodu"] + "E"]
+
+        current_season_name = self.convert_to_string_season_data(self.current_season_data)
+
+        for course in self.data_lesson_table[current_season_name]:
+            if course["Ders Kodu"] in course_codes:
+                return True
         return False
 
     def delete_course(self, current_row=None):
