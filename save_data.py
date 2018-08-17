@@ -142,14 +142,24 @@ def read_verify_departments_code() -> dict:
     return departments_code
 
 
+def read_old_courses():
+    with open("Data/old_courses.csv") as csvfile:
+        reader = csv.DictReader(csvfile)
+        old_courses = {}
+        for row in reader:
+            old_courses = dict(row)
+        return old_courses
+
 if __name__ == "__main__":
     a = read_departments_code()
     b = read_depatments_cirriculum("FIZ")
     c = read_secmeli_ders_urls("FIZ")
     d = read_secmeli_ders("FIZ")
     e = read_verify_departments_code()
+    f = read_old_courses()
     print(a)
     print(b)
     print(c)
     print(d)
     print(e)
+    print(f)

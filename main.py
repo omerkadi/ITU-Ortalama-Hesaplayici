@@ -19,6 +19,7 @@ class CustomWindow(Ui_MainWindow):
         self.number_of_courses = 0
         self.seasons_index = {}
         self.yasak_row_number = 0
+        self.old_courses = save_data.read_old_courses()
 
     def setupUi(self, MainWindow):
         super().setupUi(MainWindow)
@@ -292,6 +293,14 @@ class CustomWindow(Ui_MainWindow):
             course_codes = [course_data["Ders Kodu"], course_data["Ders Kodu"][:-1]]
         else:
             course_codes = [course_data["Ders Kodu"], course_data["Ders Kodu"] + "E"]
+        try:
+            course_codes.append(self.old_courses[course_codes[0]])
+        except KeyError:
+            pass
+        try:
+            course_codes.append(self.old_courses[course_codes[1]])
+        except KeyError:
+            pass
 
         index = self.lesson_table.rowCount()-1
         for season_data in reversed(list(self.data_lesson_table.items())):
