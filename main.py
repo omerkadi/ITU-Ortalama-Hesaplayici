@@ -189,16 +189,28 @@ class CustomWindow(Ui_MainWindow):
             self.create_message_box("Önce Dönem Seçin!")
         else:
             ders_kodu = self.read_ders_kodu_cbox()
-            ders_no = self.read_ders_no_cbox()
-            ders_not = self.read_not_cbox()
-            season = self.convert_to_string_season_data(self.current_season_data)
+            if ders_kodu == "Seç":
+                self.create_message_box("Ders Kodu Seçin")
+                return False
 
+            ders_no = self.read_ders_no_cbox()
+            if ders_no == "Seç":
+                self.create_message_box("Ders No Seçin")
+                return False
+
+            ders_not = self.read_not_cbox()
+            if ders_not == "Seç":
+                self.create_message_box("Ders Notu Seçin")
+                return False
+
+            season = self.convert_to_string_season_data(self.current_season_data)
             ders_bigi = self.find_lesson_data(ders_kodu + " " + ders_no)
             ders_bigi["Not"] = ders_not
 
             if self.check_course_before_added_current_season(ders_bigi):
                 self.create_message_box("Bir Dersi Aynı Döneme İki Kere Ekleyemezsiniz")
                 return False
+
             self.add_lesson_table([ders_bigi], user_edit=True)
             self.data_lesson_table[season].append(ders_bigi)
             self.check_lessen_before_added(ders_bigi)
