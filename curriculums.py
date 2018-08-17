@@ -129,6 +129,7 @@ def verify_departments_code(departments_codes: dict) -> dict:
 
 def parse_lessons_code(dep_code: str):
     dersler = save_data.read_depatments_cirriculum(dep_code) + save_data.read_secmeli_ders(dep_code)
+    ingilizcesi_olmayan_dersler = save_data.read_non_english_course()
 
     lessons_data = {}
     for lesson in dersler:
@@ -136,7 +137,7 @@ def parse_lessons_code(dep_code: str):
         if not data[:3] in lessons_data:
             lessons_data[data[:3]] = []
 
-        if data[7:9] == "EL" or data[7:8] == "L":
+        if data[7:9] == "EL" or data[7:8] == "L" or data in ingilizcesi_olmayan_dersler:
             lessons_data[data[:3]].append(data[4:9])
         else:
             lessons_data[data[:3]].append(data[4:7])

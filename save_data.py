@@ -150,6 +150,16 @@ def read_old_courses():
             old_courses = dict(row)
         return old_courses
 
+
+def read_non_english_course():
+    courses = []
+    with open("Data/Non-English Courses.csv") as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            courses = row
+    return courses
+
+
 if __name__ == "__main__":
     a = read_departments_code()
     b = read_depatments_cirriculum("FIZ")
@@ -157,9 +167,11 @@ if __name__ == "__main__":
     d = read_secmeli_ders("FIZ")
     e = read_verify_departments_code()
     f = read_old_courses()
+    g = read_non_english_course()
     print(a)
     print(b)
     print(c)
     print(d)
     print(e)
     print(f)
+    print(g)
