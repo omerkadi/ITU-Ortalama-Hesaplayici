@@ -1,16 +1,17 @@
 from PySide2 import QtCore, QtWidgets, QtGui
 
-from not_hesaplama import Ui_MainWindow
 import transcript
 import data
 import save_data
 import curriculums
 import hesaplamalar
+from StudentInfo import StudentInfo
 
 
-class CustomWindow(Ui_MainWindow):
+class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
-        super().__init__()
+        super(MainWindow, self).__init__()
+
         self.secilen_bolum = ""
         self.secilecek_dersler = {}
         self.data_lesson_table = transcript.edit_transcript_data(*transcript.parse_transcript_data(data.site_data))
@@ -21,8 +22,91 @@ class CustomWindow(Ui_MainWindow):
         self.yasak_row_number = 0
         self.old_courses = save_data.read_old_courses()
 
-    def setupUi(self, MainWindow):
-        super().setupUi(MainWindow)
+        self.resize(510, 700)
+        self.setFixedWidth(510)
+        self.setWindowFlags(QtCore.Qt.WindowCloseButtonHint | QtCore.Qt.WindowMinimizeButtonHint)
+
+        kod_sec_label = QtWidgets.QLabel("Bölüm Kodu Seç")
+        kod_sec_label.setMaximumSize(110, 25)
+        egitim_yili_label = QtWidgets.QLabel("Eğitim Yılını Seç")
+        egitim_donemi_label = QtWidgets.QLabel("Eğitim Dönemini Seç")
+        egitim_donemi_label.setMaximumSize(150, 25)
+        self.kod_sec_cbox = QtWidgets.QComboBox()
+        self.kod_sec_cbox.addItem("Seç")
+        self.kod_sec_cbox.setFixedSize(100, 25)
+        self.egitim_donemi_cbox = QtWidgets.QComboBox()
+        self.egitim_yili_cbox = QtWidgets.QComboBox()
+        self.season_select = QtWidgets.QPushButton("Seç")
+        hor_spacer = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding)
+
+        top_grid_layout = QtWidgets.QGridLayout()
+        top_grid_layout.addWidget(kod_sec_label, 0, 0)
+        top_grid_layout.addWidget(self.kod_sec_cbox, 0, 1)
+        top_grid_layout.addItem(hor_spacer, 0, 2)
+        top_grid_layout.addWidget(egitim_yili_label, 0, 3)
+        top_grid_layout.addWidget(self.egitim_yili_cbox, 0, 4)
+        top_grid_layout.addWidget(egitim_donemi_label, 1, 3)
+        top_grid_layout.addWidget(self.egitim_donemi_cbox, 1, 4)
+        top_grid_layout.addWidget(self.season_select, 2, 4)
+
+        self.lesson_table = QtWidgets.QTableWidget()
+        self.lesson_table.setColumnCount(4)
+        self.lesson_table.setHorizontalHeaderItem(0, QtWidgets.QTableWidgetItem("Ders Kodu"))
+        self.lesson_table.setHorizontalHeaderItem(1, QtWidgets.QTableWidgetItem("Ders İsmi"))
+        self.lesson_table.setHorizontalHeaderItem(2, QtWidgets.QTableWidgetItem("Kredi"))
+        self.lesson_table.setHorizontalHeaderItem(3, QtWidgets.QTableWidgetItem("Not"))
+        self.lesson_table.setFixedWidth(438)
+
+        ders_kodu_label = QtWidgets.QLabel("Ders Kodu")
+        ders_no_label = QtWidgets.QLabel("Ders Numarası")
+        not_label = QtWidgets.QLabel("Not")
+        gen_not_ort_label = QtWidgets.QLabel("Genel Not Ortalaması:")
+        self.gen_not_ort_gos = QtWidgets.QLabel()
+        self.ders_kodu_cbox = QtWidgets.QComboBox()
+        self.ders_kodu_cbox.addItem("Seç")
+        self.ders_no_cbox = QtWidgets.QComboBox()
+        self.ders_no_cbox.addItem("Seç")
+        self.not_cbox = QtWidgets.QComboBox()
+        self.not_cbox.addItem("Seç")
+        self.gen_not_ort_gos = QtWidgets.QLabel()
+        self.ders_cikar = QtWidgets.QPushButton("Seçilen Dersi Çıkar")
+
+        bottom_grid_layout = QtWidgets.QGridLayout()
+        bottom_grid_layout.addWidget(ders_kodu_label, 0, 0)
+        bottom_grid_layout.addWidget(self.ders_kodu_cbox, 0, 1)
+        bottom_grid_layout.addWidget(self.ders_cikar, 0, 3)
+        bottom_grid_layout.addWidget(ders_no_label, 1, 0)
+        bottom_grid_layout.addWidget(self.ders_no_cbox, 1, 1)
+        bottom_grid_layout.addWidget(gen_not_ort_label, 1, 2)
+        bottom_grid_layout.addWidget(self.gen_not_ort_gos, 1, 3)
+        bottom_grid_layout.addWidget(not_label, 2, 0)
+        bottom_grid_layout.addWidget(self.not_cbox, 2, 1)
+
+        self.add = QtWidgets.QPushButton("Ders Ekle")
+
+        bottom_hor_layout = QtWidgets.QHBoxLayout()
+        bottom_hor_layout.addWidget(self.add)
+
+        main_layout = QtWidgets.QVBoxLayout()
+        main_layout.addLayout(top_grid_layout, 0)
+        main_layout.addWidget(self.lesson_table, 1)
+        main_layout.addLayout(bottom_grid_layout, 2)
+        main_layout.addLayout(bottom_hor_layout, 3)
+
+        self.central_widget = QtWidgets.QWidget()
+        self.central_widget.setLayout(main_layout)
+        self.setCentralWidget(self.central_widget)
+        self.setWindowTitle("İTÜ Ortalama Hesaplayıcı")
+
+        QtCore.QObject.connect(self.kod_sec_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
+                               self.read_secilen_bolum)
+        QtCore.QObject.connect(self.ders_kodu_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
+                               self.set_ders_no_cbox)
+        QtCore.QObject.connect(self.egitim_yili_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
+                               self.set_egitim_donemi_cbox)
+        QtCore.QObject.connect(self.add, QtCore.SIGNAL("clicked()"), self.add_lesson)
+        QtCore.QObject.connect(self.season_select, QtCore.SIGNAL("clicked()"), self.set_current_season_data)
+        QtCore.QObject.connect(self.ders_cikar, QtCore.SIGNAL("clicked()"), self.delete_course)
 
         self.write_transcript_table()
         self.set_seasons_ort()
@@ -34,16 +118,6 @@ class CustomWindow(Ui_MainWindow):
 
         self.set_kod_sec_cbox(save_data.read_verify_departments_code())
         self.set_gen_not_ort_gos()
-
-        QtCore.QObject.connect(self.kod_sec_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
-                               self.read_secilen_bolum)
-        QtCore.QObject.connect(self.ders_kodu_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
-                               self.set_ders_no_cbox)
-        QtCore.QObject.connect(self.egitim_yili_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
-                               self.set_egitim_donemi_cbox)
-        QtCore.QObject.connect(self.add, QtCore.SIGNAL("clicked()"), self.add_lesson)
-        QtCore.QObject.connect(self.season_select, QtCore.SIGNAL("clicked()"), self.set_current_season_data)
-        QtCore.QObject.connect(self.ders_cikar, QtCore.SIGNAL("clicked()"), self.delete_course)
 
     def read_ders_kodu_cbox(self):
         return self.ders_kodu_cbox.currentText()
@@ -418,8 +492,8 @@ if __name__ == "__main__":
     import sys
 
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = CustomWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+
+    main_window = MainWindow()
+    main_window.show()
+
     sys.exit(app.exec_())
