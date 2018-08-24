@@ -32,14 +32,14 @@ def read_departments_code() -> dict:
 def save_departments_curriculum(code: str) -> bool:
     data = curriculums.trim_mt_and_itb(curriculums.get_department_curriculum(code))
 
-    if not os.path.exists("Data/Cirriculums"):
-        os.makedirs("Data/Cirriculums")
+    if not os.path.exists("Data/Curriculum"):
+        os.makedirs("Data/Curriculum")
 
     if not data:
         return False
     else:
         fieldnames = data[0].keys()
-        with open("Data/Cirriculums/"+code+".csv", "w") as csvfile:
+        with open("Data/Curriculum/"+code+".csv", "w") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             for lst in data:
@@ -47,56 +47,56 @@ def save_departments_curriculum(code: str) -> bool:
     return True
 
 
-def read_depatments_cirriculum(code: str) -> list:
+def read_departments_curriculum(code: str) -> list:
     data = []
-    if not os.path.exists("Data/Cirriculums/" + code + ".csv"):
+    if not os.path.exists("Data/Curriculum/" + code + ".csv"):
         save_departments_curriculum(code)
 
-    with open("Data/Cirriculums/" + code + ".csv") as csvfile:
+    with open("Data/Curriculum/" + code + ".csv") as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             data.append(dict(row))
     return data
 
 
-def save_secmeli_ders_urls(code: str) -> bool:
-    data = curriculums.get_secmeli_ders_urls(code)
+def save_elective_courses_urls(code: str) -> bool:
+    data = curriculums.get_elective_courses_urls(code)
 
-    if not os.path.exists("Data/SecmeliDers/Urls"):
-        os.makedirs("Data/SecmeliDers/Urls")
+    if not os.path.exists("Data/ElectiveCourses/Urls"):
+        os.makedirs("Data/ElectiveCourses/Urls")
 
     if not data:
         return False
     else:
-        with open("Data/SecmeliDers/Urls/" + code + ".csv", "w") as csvfile:
+        with open("Data/ElectiveCourses/Urls/" + code + ".csv", "w") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(data)
     return True
 
 
-def read_secmeli_ders_urls(code: str) -> list:
+def read_elective_courses_urls(code: str) -> list:
     data = []
-    if not os.path.exists("Data/SecmeliDers/Urls/" + code + ".csv"):
-        save_secmeli_ders_urls(code)
+    if not os.path.exists("Data/ElectiveCourses/Urls/" + code + ".csv"):
+        save_elective_courses_urls(code)
 
-    with open("Data/SecmeliDers/Urls/" + code + ".csv") as csvfile:
+    with open("Data/ElectiveCourses/Urls/" + code + ".csv") as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
             data = row
     return data
 
 
-def save_secmeli_ders(code: str) -> bool:
-    data = curriculums.get_secmeli_ders(read_secmeli_ders_urls(code))
+def save_elective_courses(code: str) -> bool:
+    data = curriculums.get_elective_courses(read_elective_courses_urls(code))
 
-    if not os.path.exists("Data/SecmeliDers"):
-        os.makedirs("Data/SecmeliDers")
+    if not os.path.exists("Data/ElectiveCourses"):
+        os.makedirs("Data/ElectiveCourses")
 
     if not data:
         return False
     else:
         fieldnames = list(data[0].keys())
-        with open("Data/SecmeliDers/" + code + ".csv", "w") as csvfile:
+        with open("Data/ElectiveCourses/" + code + ".csv", "w") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             for ders in data:
@@ -104,12 +104,12 @@ def save_secmeli_ders(code: str) -> bool:
     return True
 
 
-def read_secmeli_ders(code: str) -> list:
+def read_elective_courses(code: str) -> list:
     data = []
-    if not os.path.exists("Data/SecmeliDers/" + code + ".csv"):
-        save_secmeli_ders(code)
+    if not os.path.exists("Data/ElectiveCourses/" + code + ".csv"):
+        save_elective_courses(code)
 
-    with open("Data/SecmeliDers/" + code + ".csv") as csvfile:
+    with open("Data/ElectiveCourses/" + code + ".csv") as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             data.append(dict(row))
@@ -152,7 +152,7 @@ def read_old_courses():
         return old_courses
 
 
-def read_non_english_course():
+def read_non_english_courses():
     courses = []
     with open("Data/Non-English Courses.csv") as csvfile:
         reader = csv.reader(csvfile)
@@ -161,18 +161,18 @@ def read_non_english_course():
     return courses
 
 
-def save_transcript(kullanici_adi, transcript_data):
+def save_transcript(user_name, transcript_data):
     if not os.path.exists("Data/Transcripts"):
         os.makedirs("Data/Transcripts")
 
-    with open("Data/Transcripts/" + str(kullanici_adi) + ".json", "w") as file:
+    with open("Data/Transcripts/" + str(user_name) + ".json", "w") as file:
         json.dump(transcript_data, file)
 
     return True
 
 
-def read_transcript(kullanici_adi):
-    path = "Data/Transcripts/" + str(kullanici_adi) + ".json"
+def read_transcript(user_name):
+    path = "Data/Transcripts/" + str(user_name) + ".json"
 
     if not os.path.exists(path):
         return None
@@ -185,12 +185,12 @@ def read_transcript(kullanici_adi):
 
 if __name__ == "__main__":
     a = read_departments_code()
-    b = read_depatments_cirriculum("FIZ")
-    c = read_secmeli_ders_urls("FIZ")
-    d = read_secmeli_ders("FIZ")
+    b = read_departments_curriculum("FIZ")
+    c = read_elective_courses_urls("FIZ")
+    d = read_elective_courses("FIZ")
     e = read_verify_departments_code()
     f = read_old_courses()
-    g = read_non_english_course()
+    g = read_non_english_courses()
     print(a)
     print(b)
     print(c)

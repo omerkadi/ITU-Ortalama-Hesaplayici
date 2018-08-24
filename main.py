@@ -3,7 +3,7 @@ from PySide2 import QtCore, QtWidgets, QtGui
 import transcript
 import save_data
 import curriculums
-import hesaplamalar
+import calculations
 from StudentInfo import StudentInfo
 
 
@@ -11,85 +11,86 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
 
-        self.secilen_bolum = ""
-        self.secilecek_dersler = {}
-        self.data_lesson_table = {}
+        self.selected_department = ""
+        self.selectable_courses = {}
+        self.data_course_table = {}
         self.last_season_data = ""
         self.current_season_data = []
         self.number_of_courses = 0
         self.seasons_index = {}
-        self.yasak_row_number = 0
+        self.banned_row_number = 0
         self.old_courses = save_data.read_old_courses()
         self.user_name = ""
+        self.student_info = None
 
         self.resize(510, 700)
         self.setFixedWidth(510)
         self.setWindowFlags(QtCore.Qt.WindowCloseButtonHint | QtCore.Qt.WindowMinimizeButtonHint)
 
-        kullanici_adi_label = QtWidgets.QLabel("Kullanıcı adı:")
-        self.kullanici_adi_gos_label = QtWidgets.QLabel("")
-        self.kullanici_sec_button = QtWidgets.QPushButton("Kullanıcı Seç")
+        user_name_label = QtWidgets.QLabel("Kullanıcı adı:")
+        self.user_name_show_label = QtWidgets.QLabel("")
+        self.user_select_button = QtWidgets.QPushButton("Kullanıcı Seç")
 
         user_layout = QtWidgets.QHBoxLayout()
-        user_layout.addWidget(kullanici_adi_label, 0)
-        user_layout.addWidget(self.kullanici_adi_gos_label, 1)
-        user_layout.addWidget(self.kullanici_sec_button, 2)
+        user_layout.addWidget(user_name_label, 0)
+        user_layout.addWidget(self.user_name_show_label, 1)
+        user_layout.addWidget(self.user_select_button, 2)
 
-        kod_sec_label = QtWidgets.QLabel("Bölüm Kodu Seç")
-        kod_sec_label.setMaximumSize(110, 25)
-        egitim_yili_label = QtWidgets.QLabel("Eğitim Yılını Seç")
-        egitim_donemi_label = QtWidgets.QLabel("Eğitim Dönemini Seç")
-        egitim_donemi_label.setMaximumSize(150, 25)
-        self.kod_sec_cbox = QtWidgets.QComboBox()
-        self.kod_sec_cbox.addItem("Seç")
-        self.kod_sec_cbox.setFixedSize(100, 25)
-        self.egitim_donemi_cbox = QtWidgets.QComboBox()
-        self.egitim_yili_cbox = QtWidgets.QComboBox()
+        code_select_label = QtWidgets.QLabel("Bölüm Kodu Seç")
+        code_select_label.setMaximumSize(110, 25)
+        education_year_label = QtWidgets.QLabel("Eğitim Yılını Seç")
+        education_season_label = QtWidgets.QLabel("Eğitim Dönemini Seç")
+        education_season_label.setMaximumSize(150, 25)
+        self.code_select_cbox = QtWidgets.QComboBox()
+        self.code_select_cbox.addItem("Seç")
+        self.code_select_cbox.setFixedSize(100, 25)
+        self.education_season_cbox = QtWidgets.QComboBox()
+        self.education_year_cbox = QtWidgets.QComboBox()
         self.season_select = QtWidgets.QPushButton("Seç")
         hor_spacer = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding)
 
         top_grid_layout = QtWidgets.QGridLayout()
-        top_grid_layout.addWidget(kod_sec_label, 0, 0)
-        top_grid_layout.addWidget(self.kod_sec_cbox, 0, 1)
+        top_grid_layout.addWidget(code_select_label, 0, 0)
+        top_grid_layout.addWidget(self.code_select_cbox, 0, 1)
         top_grid_layout.addItem(hor_spacer, 0, 2)
-        top_grid_layout.addWidget(egitim_yili_label, 0, 3)
-        top_grid_layout.addWidget(self.egitim_yili_cbox, 0, 4)
-        top_grid_layout.addWidget(egitim_donemi_label, 1, 3)
-        top_grid_layout.addWidget(self.egitim_donemi_cbox, 1, 4)
+        top_grid_layout.addWidget(education_year_label, 0, 3)
+        top_grid_layout.addWidget(self.education_year_cbox, 0, 4)
+        top_grid_layout.addWidget(education_season_label, 1, 3)
+        top_grid_layout.addWidget(self.education_season_cbox, 1, 4)
         top_grid_layout.addWidget(self.season_select, 2, 4)
 
-        self.lesson_table = QtWidgets.QTableWidget()
-        self.lesson_table.setColumnCount(4)
-        self.lesson_table.setHorizontalHeaderItem(0, QtWidgets.QTableWidgetItem("Ders Kodu"))
-        self.lesson_table.setHorizontalHeaderItem(1, QtWidgets.QTableWidgetItem("Ders İsmi"))
-        self.lesson_table.setHorizontalHeaderItem(2, QtWidgets.QTableWidgetItem("Kredi"))
-        self.lesson_table.setHorizontalHeaderItem(3, QtWidgets.QTableWidgetItem("Not"))
-        self.lesson_table.setFixedWidth(438)
+        self.course_table = QtWidgets.QTableWidget()
+        self.course_table.setColumnCount(4)
+        self.course_table.setHorizontalHeaderItem(0, QtWidgets.QTableWidgetItem("Ders Kodu"))
+        self.course_table.setHorizontalHeaderItem(1, QtWidgets.QTableWidgetItem("Ders İsmi"))
+        self.course_table.setHorizontalHeaderItem(2, QtWidgets.QTableWidgetItem("Kredi"))
+        self.course_table.setHorizontalHeaderItem(3, QtWidgets.QTableWidgetItem("Not"))
+        self.course_table.setFixedWidth(438)
 
-        ders_kodu_label = QtWidgets.QLabel("Ders Kodu")
-        ders_no_label = QtWidgets.QLabel("Ders Numarası")
+        course_code_label = QtWidgets.QLabel("Ders Kodu")
+        course_num_label = QtWidgets.QLabel("Ders Numarası")
         not_label = QtWidgets.QLabel("Not")
         gen_not_ort_label = QtWidgets.QLabel("Genel Not Ortalaması:")
-        self.gen_not_ort_gos = QtWidgets.QLabel()
-        self.ders_kodu_cbox = QtWidgets.QComboBox()
-        self.ders_kodu_cbox.addItem("Seç")
-        self.ders_no_cbox = QtWidgets.QComboBox()
-        self.ders_no_cbox.addItem("Seç")
-        self.not_cbox = QtWidgets.QComboBox()
-        self.not_cbox.addItem("Seç")
-        self.gen_not_ort_gos = QtWidgets.QLabel()
-        self.ders_cikar = QtWidgets.QPushButton("Seçilen Dersi Çıkar")
+        self.gpa_show_label = QtWidgets.QLabel()
+        self.course_code_cbox = QtWidgets.QComboBox()
+        self.course_code_cbox.addItem("Seç")
+        self.course_num_cbox = QtWidgets.QComboBox()
+        self.course_num_cbox.addItem("Seç")
+        self.grade_cbox = QtWidgets.QComboBox()
+        self.grade_cbox.addItem("Seç")
+        self.gpa_show_label = QtWidgets.QLabel()
+        self.remove_course = QtWidgets.QPushButton("Seçilen Dersi Çıkar")
 
         bottom_grid_layout = QtWidgets.QGridLayout()
-        bottom_grid_layout.addWidget(ders_kodu_label, 0, 0)
-        bottom_grid_layout.addWidget(self.ders_kodu_cbox, 0, 1)
-        bottom_grid_layout.addWidget(self.ders_cikar, 0, 3)
-        bottom_grid_layout.addWidget(ders_no_label, 1, 0)
-        bottom_grid_layout.addWidget(self.ders_no_cbox, 1, 1)
+        bottom_grid_layout.addWidget(course_code_label, 0, 0)
+        bottom_grid_layout.addWidget(self.course_code_cbox, 0, 1)
+        bottom_grid_layout.addWidget(self.remove_course, 0, 3)
+        bottom_grid_layout.addWidget(course_num_label, 1, 0)
+        bottom_grid_layout.addWidget(self.course_num_cbox, 1, 1)
         bottom_grid_layout.addWidget(gen_not_ort_label, 1, 2)
-        bottom_grid_layout.addWidget(self.gen_not_ort_gos, 1, 3)
+        bottom_grid_layout.addWidget(self.gpa_show_label, 1, 3)
         bottom_grid_layout.addWidget(not_label, 2, 0)
-        bottom_grid_layout.addWidget(self.not_cbox, 2, 1)
+        bottom_grid_layout.addWidget(self.grade_cbox, 2, 1)
 
         self.add = QtWidgets.QPushButton("Ders Ekle")
 
@@ -99,7 +100,7 @@ class MainWindow(QtWidgets.QMainWindow):
         main_layout = QtWidgets.QVBoxLayout()
         main_layout.addLayout(user_layout, 0)
         main_layout.addLayout(top_grid_layout, 1)
-        main_layout.addWidget(self.lesson_table, 2)
+        main_layout.addWidget(self.course_table, 2)
         main_layout.addLayout(bottom_grid_layout, 3)
         main_layout.addLayout(bottom_hor_layout, 4)
 
@@ -108,121 +109,121 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setCentralWidget(self.central_widget)
         self.setWindowTitle("İTÜ Ortalama Hesaplayıcı")
 
-        QtCore.QObject.connect(self.kod_sec_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
-                               self.read_secilen_bolum)
-        QtCore.QObject.connect(self.ders_kodu_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
-                               self.set_ders_no_cbox)
-        QtCore.QObject.connect(self.egitim_yili_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
-                               self.set_egitim_donemi_cbox)
-        QtCore.QObject.connect(self.add, QtCore.SIGNAL("clicked()"), self.add_lesson)
+        QtCore.QObject.connect(self.code_select_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
+                               self.read_selected_department)
+        QtCore.QObject.connect(self.course_code_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
+                               self.set_course_num_cbox)
+        QtCore.QObject.connect(self.education_year_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
+                               self.set_education_season_cbox)
+        QtCore.QObject.connect(self.add, QtCore.SIGNAL("clicked()"), self.add_course)
         QtCore.QObject.connect(self.season_select, QtCore.SIGNAL("clicked()"), self.set_current_season_data)
-        QtCore.QObject.connect(self.ders_cikar, QtCore.SIGNAL("clicked()"), self.delete_course)
-        QtCore.QObject.connect(self.kullanici_sec_button, QtCore.SIGNAL("clicked()"), self.set_user_name)
+        QtCore.QObject.connect(self.remove_course, QtCore.SIGNAL("clicked()"), self.delete_course)
+        QtCore.QObject.connect(self.user_select_button, QtCore.SIGNAL("clicked()"), self.set_user_name)
 
-        if not self.data_lesson_table:
+        if not self.data_course_table:
             self.set_user_name()
-            self.data_lesson_table = save_data.read_transcript(self.user_name)
-            self.last_season_data = self.parse_season_name_to_data(list(self.data_lesson_table.keys())[-1])
+            self.data_course_table = save_data.read_transcript(self.user_name)
+            self.last_season_data = self.parse_season_name_to_data(list(self.data_course_table.keys())[-1])
 
         self.write_transcript_table()
         self.set_seasons_ort()
-        self.set_egitim_yili_cbox()
-        self.set_egitim_donemi_cbox()
+        self.set_education_year_cbox()
+        self.set_education_season_cbox()
 
-        for notlar in ["AA", "BA", "BB", "CB", "CC", "DC", "DD", "FF", "VF"]:
-            self.not_cbox.addItem(notlar)
+        for grades in ["AA", "BA", "BB", "CB", "CC", "DC", "DD", "FF", "VF"]:
+            self.grade_cbox.addItem(grades)
 
-        self.set_kod_sec_cbox(save_data.read_verify_departments_code())
-        self.set_gen_not_ort_gos()
+        self.set_code_select_cbox(save_data.read_verify_departments_code())
+        self.set_gpa_show_label()
 
-    def read_ders_kodu_cbox(self):
-        return self.ders_kodu_cbox.currentText()
+    def read_course_code_cbox(self):
+        return self.course_code_cbox.currentText()
 
-    def read_ders_no_cbox(self):
-        return self.ders_no_cbox.currentText()
+    def read_course_num_cbox(self):
+        return self.course_num_cbox.currentText()
 
-    def read_not_cbox(self):
-        return self.not_cbox.currentText()
+    def read_grade_cbox(self):
+        return self.grade_cbox.currentText()
 
-    def read_secilen_bolum(self):
-        self.secilen_bolum = self.kod_sec_cbox.currentText()
-        self.secilecek_dersler = curriculums.parse_lessons_code(self.secilen_bolum)
-        self.set_ders_kodu_cbox()
+    def read_selected_department(self):
+        self.selected_department = self.code_select_cbox.currentText()
+        self.selectable_courses = curriculums.parse_courses_code(self.selected_department)
+        self.set_course_code_cbox()
 
     def read_courses_data(self):
         courses_data = []
-        for couses in self.data_lesson_table.values():
-            for course in couses:
-                ders_not = course["Not"]
-                if ders_not[-1] == "*" or ders_not == "M " or ders_not == "T ":
+        for courses in self.data_course_table.values():
+            for course in courses:
+                course_grade = course["Not"]
+                if course_grade[-1] == "*" or course_grade == "M " or course_grade == "T ":
                     continue
                 courses_data.append({"Kredi": course["Kredi"], "Not": course["Not"]})
         return courses_data
 
-    def set_ders_no_cbox(self):
-        bolum_code = self.ders_kodu_cbox.currentText()
-        self.ders_no_cbox.clear()
-        self.ders_no_cbox.addItem("Seç")
-        if bolum_code not in ["", "Seç"]:
-            for code in sorted(set(self.secilecek_dersler[bolum_code])):
-                self.ders_no_cbox.addItem(code)
+    def set_course_num_cbox(self):
+        department_code = self.course_code_cbox.currentText()
+        self.course_num_cbox.clear()
+        self.course_num_cbox.addItem("Seç")
+        if department_code not in ["", "Seç"]:
+            for code in sorted(set(self.selectable_courses[department_code])):
+                self.course_num_cbox.addItem(code)
 
-    def set_ders_kodu_cbox(self):
-        self.ders_kodu_cbox.clear()
-        self.ders_kodu_cbox.addItem("Seç")
-        for code in sorted(self.secilecek_dersler.keys()):
-            self.ders_kodu_cbox.addItem(code)
+    def set_course_code_cbox(self):
+        self.course_code_cbox.clear()
+        self.course_code_cbox.addItem("Seç")
+        for code in sorted(self.selectable_courses.keys()):
+            self.course_code_cbox.addItem(code)
 
-    def set_kod_sec_cbox(self, departments: dict):
+    def set_code_select_cbox(self, departments: dict):
         for code in sorted(list(departments.values())):
-            self.kod_sec_cbox.addItem(code)
+            self.code_select_cbox.addItem(code)
 
-    def set_egitim_yili_cbox(self):
+    def set_education_year_cbox(self):
         years = self.calculate_years()
 
         for year in years:
-            self.egitim_yili_cbox.addItem(year)
+            self.education_year_cbox.addItem(year)
 
-    def set_egitim_donemi_cbox(self):
-        self.egitim_donemi_cbox.clear()
+    def set_education_season_cbox(self):
+        self.education_season_cbox.clear()
         seasons = ["Güz", "Bahar", "Yaz Öğretimi"]
-        egitim_yili = self.egitim_yili_cbox.currentText()
+        education_year = self.education_year_cbox.currentText()
         last_year = str(self.last_season_data[0][0]) + "-" + str(self.last_season_data[0][1])
 
-        if egitim_yili == last_year:
+        if education_year == last_year:
             for i in range(seasons.index(self.last_season_data[1])+1, 3):
-                self.egitim_donemi_cbox.addItem(seasons[i])
+                self.education_season_cbox.addItem(seasons[i])
         else:
             for season in seasons:
-                self.egitim_donemi_cbox.addItem(season)
+                self.education_season_cbox.addItem(season)
 
     def set_current_season_data(self):
-        year_data = self.egitim_yili_cbox.currentText().split("-")
-        donem_data = self.egitim_donemi_cbox.currentText()
+        year_data = self.education_year_cbox.currentText().split("-")
+        season_data = self.education_season_cbox.currentText()
         seasons = list(self.seasons_index.keys())
 
-        self.current_season_data = [year_data, donem_data]
+        self.current_season_data = [year_data, season_data]
         if not self.convert_to_string_season_data(self.current_season_data) in seasons:
             self.add_season_table(self.current_season_data)
-            self.data_lesson_table[self.convert_to_string_season_data(self.current_season_data)] = []
+            self.data_course_table[self.convert_to_string_season_data(self.current_season_data)] = []
 
     def set_rows_header(self):
         course_counter = 1
-        for i in range(self.lesson_table.rowCount()):
-            item = self.lesson_table.takeVerticalHeaderItem(i)
+        for i in range(self.course_table.rowCount()):
+            item = self.course_table.takeVerticalHeaderItem(i)
             if item.text() != "":
                 item.setText(str(course_counter))
                 course_counter += 1
-            self.lesson_table.setVerticalHeaderItem(i, item)
+            self.course_table.setVerticalHeaderItem(i, item)
 
-    def set_gen_not_ort_gos(self):
-        self.gen_not_ort_gos.setText(str(hesaplamalar.genel_ort_hesapla(self.read_courses_data())))
+    def set_gpa_show_label(self):
+        self.gpa_show_label.setText(str(calculations.calculate_gpa(self.read_courses_data())))
 
     def set_seasons_index(self):
-        for i in range(self.lesson_table.rowCount()):
+        for i in range(self.course_table.rowCount()):
             try:
-                float(self.lesson_table.item(i, 3).text())
-                season = self.lesson_table.item(i, 0).text() + " / " + self.lesson_table.item(i, 1).text()
+                float(self.course_table.item(i, 3).text())
+                season = self.course_table.item(i, 0).text() + " / " + self.course_table.item(i, 1).text()
                 self.seasons_index[season] = i
             except ValueError:
                 pass
@@ -231,24 +232,24 @@ class MainWindow(QtWidgets.QMainWindow):
 
         copy_seasons_index = dict(self.seasons_index)
         for season in self.seasons_index.keys():
-            if season not in self.data_lesson_table.keys():
+            if season not in self.data_course_table.keys():
                 copy_seasons_index.pop(season)
         self.seasons_index = copy_seasons_index
 
     def set_seasons_ort(self):
         for name, index in self.seasons_index.items():
-            veri = []
-            for course in self.data_lesson_table[name]:
-                veri.append({"Kredi": course["Kredi"], "Not": course["Not"]})
-            hesaplama = hesaplamalar.genel_ort_hesapla(veri, kredi=True)
+            data = []
+            for course in self.data_course_table[name]:
+                data.append({"Kredi": course["Kredi"], "Not": course["Not"]})
+            calculations = calculations.calculate_gpa(data, credit=True)
 
-            item = self.lesson_table.takeItem(index, 2)
-            item.setText(str(hesaplama[1]))
-            self.lesson_table.setItem(index, 2, item)
+            item = self.course_table.takeItem(index, 2)
+            item.setText(str(calculations[1]))
+            self.course_table.setItem(index, 2, item)
 
-            item = self.lesson_table.takeItem(index, 3)
-            item.setText(str(hesaplama[0]))
-            self.lesson_table.setItem(index, 3, item)
+            item = self.course_table.takeItem(index, 3)
+            item.setText(str(calculations[0]))
+            self.course_table.setItem(index, 3, item)
 
     def set_user_name(self):
         self.student_info = StudentInfo()
@@ -257,96 +258,97 @@ class MainWindow(QtWidgets.QMainWindow):
         if self.student_info.exec_() == QtWidgets.QDialog.Accepted:
             self.student_info.get_transcript_data()
             self.user_name = self.student_info.user_name
-            self.kullanici_adi_gos_label.setText(self.user_name)
+            self.user_name_show_label.setText(self.user_name)
 
-    def add_lesson_table(self, dersler, user_edit=False):
-        for ders in dersler:
+    def add_course_table(self, courses, user_edit=False):
+        for course in courses:
             row_count = self.calculate_row_number()
-            self.lesson_table.insertRow(row_count)
+            self.course_table.insertRow(row_count)
             self.number_of_courses += 1
-            self.lesson_table.setVerticalHeaderItem(row_count, QtWidgets.QTableWidgetItem(str(self.number_of_courses)))
-            for i, ders_data in enumerate(ders.values()):
+            self.course_table.setVerticalHeaderItem(row_count, QtWidgets.QTableWidgetItem(str(self.number_of_courses)))
+            for i, course_data in enumerate(course.values()):
                 if (user_edit is True) and (i == 3):
                     note_combo_box = QtWidgets.QComboBox()
-                    if not int(self.lesson_table.item(row_count, 2).text()):
-                        for notlar in ["BZ", "BL"]:
-                            note_combo_box.addItem(notlar)
+                    if not int(self.course_table.item(row_count, 2).text()):
+                        for grades in ["BZ", "BL"]:
+                            note_combo_box.addItem(grades)
                     else:
-                        for notlar in ["AA", "BA", "BB", "CB", "CC", "DC", "DD", "FF", "VF"]:
-                            note_combo_box.addItem(notlar)
-                    note_combo_box.setCurrentText(ders_data)
-                    self.lesson_table.setCellWidget(row_count, i, note_combo_box)
-                    QtCore.QObject.connect(self.lesson_table.cellWidget(row_count, i),
+                        for grades in ["AA", "BA", "BB", "CB", "CC", "DC", "DD", "FF", "VF"]:
+                            note_combo_box.addItem(grades)
+                    note_combo_box.setCurrentText(course_data)
+                    self.course_table.setCellWidget(row_count, i, note_combo_box)
+                    QtCore.QObject.connect(self.course_table.cellWidget(row_count, i),
                                            QtCore.SIGNAL("currentIndexChanged(QString)"),
-                                           self.update_couses_data_from_note_cbox)
+                                           self.update_courses_data_from_note_cbox)
                 else:
-                    item = QtWidgets.QTableWidgetItem(ders_data)
+                    item = QtWidgets.QTableWidgetItem(course_data)
                     item.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    self.lesson_table.setItem(row_count, i, item)
+                    self.course_table.setItem(row_count, i, item)
 
-    def add_lesson(self):
+    def add_course(self):
         if not self.current_season_data:
             self.create_message_box("Önce Dönem Seçin!")
         else:
-            ders_kodu = self.read_ders_kodu_cbox()
-            if ders_kodu == "Seç":
+            course_code = self.read_course_code_cbox()
+            if course_code == "Seç":
                 self.create_message_box("Ders Kodu Seçin")
                 return False
 
-            ders_no = self.read_ders_no_cbox()
-            if ders_no == "Seç":
+            course_num = self.read_course_num_cbox()
+            if course_num == "Seç":
                 self.create_message_box("Ders No Seçin")
                 return False
 
-            ders_not = self.read_not_cbox()
-            if ders_not == "Seç":
+            course_grade = self.read_grade_cbox()
+            if course_grade == "Seç":
                 self.create_message_box("Ders Notu Seçin")
                 return False
 
             season = self.convert_to_string_season_data(self.current_season_data)
-            ders_bigi = self.find_lesson_data(ders_kodu + " " + ders_no)
-            ders_bigi["Not"] = ders_not
+            course_data = self.find_course_data(course_code + " " + course_num)
+            course_data["Not"] = course_grade
 
-            if self.check_course_before_added_current_season(ders_bigi):
+            if self.check_course_before_added_current_season(course_data):
                 self.create_message_box("Bir Dersi Aynı Döneme İki Kere Ekleyemezsiniz")
                 return False
 
-            self.add_lesson_table([ders_bigi], user_edit=True)
-            self.data_lesson_table[season].append(ders_bigi)
-            self.check_lessen_before_added(ders_bigi)
+            self.add_course_table([course_data], user_edit=True)
+            self.data_course_table[season].append(course_data)
+            self.check_course_before_added(course_data)
             self.set_seasons_index()
-            self.set_gen_not_ort_gos()
+            self.set_gpa_show_label()
             self.set_seasons_ort()
         return True
 
     def add_season_table(self, season_data):
-        row_count = self.lesson_table.rowCount()
+        row_count = self.course_table.rowCount()
         self.seasons_index[self.convert_to_string_season_data(season_data)] = row_count
-        column_count = self.lesson_table.columnCount()
+        column_count = self.course_table.columnCount()
         year = str(season_data[0][0]) + "-" + str(season_data[0][1])
 
-        self.lesson_table.insertRow(row_count)
-        self.lesson_table.setVerticalHeaderItem(row_count, QtWidgets.QTableWidgetItem(""))
-        self.lesson_table.verticalHeaderItem(row_count).setBackgroundColor(QtGui.QColor(QtCore.Qt.gray))
+        self.course_table.insertRow(row_count)
+        self.course_table.setVerticalHeaderItem(row_count, QtWidgets.QTableWidgetItem(""))
+        self.course_table.verticalHeaderItem(row_count).setBackgroundColor(QtGui.QColor(QtCore.Qt.gray))
 
-        self.lesson_table.setItem(row_count, 0, QtWidgets.QTableWidgetItem(year))
-        self.lesson_table.setItem(row_count, 1, QtWidgets.QTableWidgetItem(season_data[1]))
+        self.course_table.setItem(row_count, 0, QtWidgets.QTableWidgetItem(year))
+        self.course_table.setItem(row_count, 1, QtWidgets.QTableWidgetItem(season_data[1]))
         for column in range(2, column_count):
-            self.lesson_table.setItem(row_count, column, QtWidgets.QTableWidgetItem(""))
+            self.course_table.setItem(row_count, column, QtWidgets.QTableWidgetItem(""))
 
         for column in range(column_count):
-            self.lesson_table.item(row_count, column).setBackgroundColor(QtGui.QColor(QtCore.Qt.gray))
-            self.lesson_table.item(row_count, column).setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+            self.course_table.item(row_count, column).setBackgroundColor(QtGui.QColor(QtCore.Qt.gray))
+            self.course_table.item(row_count, column).setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
 
-    def find_lesson_data(self, lesson_code):
-        bolum_code = self.kod_sec_cbox.currentText()
+    def find_course_data(self, course_code):
+        department_code = self.code_select_cbox.currentText()
 
-        dersler = save_data.read_secmeli_ders(bolum_code) + save_data.read_depatments_cirriculum(bolum_code)
+        courses = save_data.read_elective_courses(department_code) + save_data.read_departments_curriculum(
+            department_code)
 
-        for item in dersler:
+        for item in courses:
             key = item["Ders Kodu"]
-            if lesson_code == key or lesson_code[:-1] == key or lesson_code == key[:-1]:
-                item["Ders Kodu"] = lesson_code
+            if course_code == key or course_code[:-1] == key or course_code == key[:-1]:
+                item["Ders Kodu"] = course_code
                 return item
         return {}
 
@@ -365,29 +367,30 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def calculate_row_number(self):
         if not self.current_season_data:
-            return self.lesson_table.rowCount()
+            return self.course_table.rowCount()
 
         current_season = self.convert_to_string_season_data(self.current_season_data)
         seasons = list(self.seasons_index.keys())
         index = list(self.seasons_index.values())
 
         if current_season == seasons[-1]:
-            return self.lesson_table.rowCount()
+            return self.course_table.rowCount()
         for i, season in enumerate(seasons):
             if current_season == season:
                 return index[i+1]
         return False
 
     def write_transcript_table(self):
-        for donem, donem_dersleri in self.data_lesson_table.items():
-            self.add_season_table(transcript.parse_season_name(donem))
-            self.add_lesson_table(donem_dersleri)
-        self.yasak_row_number = self.number_of_courses + len(self.data_lesson_table) - 1
+        for season, season_courses in self.data_course_table.items():
+            self.add_season_table(transcript.parse_season_name(season))
+            self.add_course_table(season_courses)
+        self.banned_row_number = self.number_of_courses + len(self.data_course_table) - 1
 
-    def convert_to_string_season_data(self, season_data):
+    @staticmethod
+    def convert_to_string_season_data(season_data):
         return str(season_data[0][0]) + "-" + str(season_data[0][1]) + " / " + season_data[1]
 
-    def check_lessen_before_added(self, course_data):
+    def check_course_before_added(self, course_data):
         if course_data["Ders Kodu"][-1] == "E":
             course_codes = [course_data["Ders Kodu"], course_data["Ders Kodu"][:-1]]
         else:
@@ -401,8 +404,8 @@ class MainWindow(QtWidgets.QMainWindow):
         except KeyError:
             pass
 
-        index = self.lesson_table.rowCount()-1
-        for season_data in reversed(list(self.data_lesson_table.items())):
+        index = self.course_table.rowCount() - 1
+        for season_data in reversed(list(self.data_course_table.items())):
             for j, course in reversed(list(enumerate(season_data[1]))):
                 if course["Ders Kodu"] in course_codes and season_data[0] !=\
                         self.convert_to_string_season_data(self.current_season_data):
@@ -420,24 +423,24 @@ class MainWindow(QtWidgets.QMainWindow):
 
         current_season_name = self.convert_to_string_season_data(self.current_season_data)
 
-        for course in self.data_lesson_table[current_season_name]:
+        for course in self.data_course_table[current_season_name]:
             if course["Ders Kodu"] in course_codes:
                 return True
         return False
 
     def delete_course(self, current_row=None):
         if current_row is None:
-            current_row = self.lesson_table.currentRow()
+            current_row = self.course_table.currentRow()
 
         course_data = []
-        if current_row > self.yasak_row_number:
-            courses_data = dict(self.data_lesson_table)
+        if current_row > self.banned_row_number:
+            courses_data = dict(self.data_course_table)
             counter = -1
-            for season, courses in self.data_lesson_table.items():
+            for season, courses in self.data_course_table.items():
                 counter += 1
                 if counter == current_row:
-                    for i in range(len(self.data_lesson_table[season])):
-                        self.lesson_table.removeRow(counter+1)
+                    for i in range(len(self.data_course_table[season])):
+                        self.course_table.removeRow(counter + 1)
                         self.number_of_courses -= 1
                         if season == self.convert_to_string_season_data(self.current_season_data):
                             self.current_season_data = []
@@ -448,40 +451,41 @@ class MainWindow(QtWidgets.QMainWindow):
                         course_data = courses_data[season].pop(i)
                         self.number_of_courses -= 1
 
-            self.lesson_table.removeRow(current_row)
-            self.data_lesson_table = courses_data
+            self.course_table.removeRow(current_row)
+            self.data_course_table = courses_data
             self.set_rows_header()
             if not course_data == []:
-                self.check_lessen_before_added(course_data)
-            self.set_gen_not_ort_gos()
+                self.check_course_before_added(course_data)
+            self.set_gpa_show_label()
             self.set_seasons_index()
             self.set_seasons_ort()
         else:
             self.create_message_box("Bu Satırı Kaldıramzsınız")
 
-    def create_message_box(self, message):
+    @staticmethod
+    def create_message_box(message):
         msg_box = QtWidgets.QMessageBox()
         msg_box.setText(str(message))
         msg_box.setStandardButtons(QtWidgets.QMessageBox.Ok)
         msg_box.exec_()
 
-    def update_couses_data_from_note_cbox(self):
-        self.update_data_lesson_table()
-        self.set_gen_not_ort_gos()
+    def update_courses_data_from_note_cbox(self):
+        self.update_data_course_table()
+        self.set_gpa_show_label()
         self.set_seasons_ort()
 
-    def update_data_lesson_table(self):
+    def update_data_course_table(self):
         course_counter = 0
         season = ""
-        for i in range(self.lesson_table.rowCount()):
+        for i in range(self.course_table.rowCount()):
             if i in self.seasons_index.values():
-                season = self.lesson_table.item(i, 0).text() + " / " + self.lesson_table.item(i, 1).text()
+                season = self.course_table.item(i, 0).text() + " / " + self.course_table.item(i, 1).text()
                 course_counter = 0
                 continue
             try:
-                item_text = self.lesson_table.cellWidget(i, 3).currentText()
-                if item_text != self.data_lesson_table[season][course_counter]["Not"]:
-                    self.data_lesson_table[season][course_counter]["Not"] = item_text
+                item_text = self.course_table.cellWidget(i, 3).currentText()
+                if item_text != self.data_course_table[season][course_counter]["Not"]:
+                    self.data_course_table[season][course_counter]["Not"] = item_text
             except AttributeError:
                 pass
             course_counter += 1
@@ -489,35 +493,38 @@ class MainWindow(QtWidgets.QMainWindow):
     def update_course_note(self, table_index, note, season, season_index):
         if note[-1] == "*":
             new_note = note[:-1]
-            self.data_lesson_table[season][season_index]["Not"] = new_note
+            self.data_course_table[season][season_index]["Not"] = new_note
             try:
-                item = self.lesson_table.takeItem(table_index, 3)
+                item = self.course_table.takeItem(table_index, 3)
                 item.setText(new_note)
-                self.lesson_table.setItem(table_index, 3, item)
+                self.course_table.setItem(table_index, 3, item)
             except AttributeError:
-                item = self.lesson_table.cellWidget(table_index, 3)
+                item = self.course_table.cellWidget(table_index, 3)
                 item.setItemText(item.currentIndex(), new_note)
                 item.setEnabled(True)
-                self.lesson_table.setCellWidget(table_index, 3, item)
+                self.course_table.setCellWidget(table_index, 3, item)
         else:
             new_note = note + "*"
-            self.data_lesson_table[season][season_index]["Not"] = new_note
+            self.data_course_table[season][season_index]["Not"] = new_note
             try:
-                item = self.lesson_table.takeItem(table_index, 3)
+                item = self.course_table.takeItem(table_index, 3)
                 item.setText(new_note)
-                self.lesson_table.setItem(table_index, 3, item)
+                self.course_table.setItem(table_index, 3, item)
             except AttributeError:
-                item = self.lesson_table.cellWidget(table_index, 3)
+                item = self.course_table.cellWidget(table_index, 3)
                 item.setItemText(item.currentIndex(), new_note)
                 item.setEnabled(False)
-                self.lesson_table.setCellWidget(table_index, 3, item)
+                self.course_table.setCellWidget(table_index, 3, item)
 
-    def parse_season_name_to_data(self, season_name):
-        years, donem = season_name.split(" / ")
-        firt_year, secound_year = years.split("-")
-        firt_year = int(firt_year)
-        secound_year = int(secound_year)
-        return [[firt_year, secound_year], donem]
+    @staticmethod
+    def parse_season_name_to_data(season_name):
+        parsed = season_name.split(" / ")
+
+        years = parsed[0].split("-")
+        years = [int(years[0]), int(years[1])]
+
+        season = parsed[1]
+        return [years, season]
 
 
 if __name__ == "__main__":
