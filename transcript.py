@@ -1,7 +1,5 @@
 import bs4
-
-
-import data
+from save_data import read_transcript
 
 
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) '
@@ -56,19 +54,18 @@ def edit_transcript_data(donemler, donem_names):
     return edited_transcript_data
 
 
-def get_seasons_names():
-    seasons_data = parse_transcript_data(data.site_data, only_season=True)
+def get_seasons_names(user_name):
+    seasons_data = parse_transcript_data(read_transcript(user_name), only_season=True)
     seasons_name = []
     for season in seasons_data:
         seasons_name.append(season.text)
     return seasons_name
 
-def get_last_season():
-    seasons_name = get_seasons_names()
+
+def get_last_season(user_name):
+    seasons_name = get_seasons_names(user_name)
     return parse_season_name(seasons_name[-1])
 
+
 if __name__ == "__main__":
-    season_data = parse_transcript_data(data.site_data, only_season=True)
-    season_names = get_seasons_names()
-    transcript_data = edit_transcript_data(*parse_transcript_data(data.site_data))
-    print(transcript_data)
+    pass

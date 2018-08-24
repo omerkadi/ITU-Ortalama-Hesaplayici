@@ -1,7 +1,6 @@
 from PySide2 import QtCore, QtWidgets, QtGui
 
 import transcript
-import data
 import save_data
 import curriculums
 import hesaplamalar
@@ -14,17 +13,27 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.secilen_bolum = ""
         self.secilecek_dersler = {}
-        self.data_lesson_table = transcript.edit_transcript_data(*transcript.parse_transcript_data(data.site_data))
-        self.last_season_data = transcript.get_last_season()
+        self.data_lesson_table = {}
+        self.last_season_data = ""
         self.current_season_data = []
         self.number_of_courses = 0
         self.seasons_index = {}
         self.yasak_row_number = 0
         self.old_courses = save_data.read_old_courses()
+        self.user_name = ""
 
         self.resize(510, 700)
         self.setFixedWidth(510)
         self.setWindowFlags(QtCore.Qt.WindowCloseButtonHint | QtCore.Qt.WindowMinimizeButtonHint)
+
+        kullanici_adi_label = QtWidgets.QLabel("Kullanıcı adı:")
+        self.kullanici_adi_gos_label = QtWidgets.QLabel("")
+        self.kullanici_sec_button = QtWidgets.QPushButton("Kullanıcı Seç")
+
+        user_layout = QtWidgets.QHBoxLayout()
+        user_layout.addWidget(kullanici_adi_label, 0)
+        user_layout.addWidget(self.kullanici_adi_gos_label, 1)
+        user_layout.addWidget(self.kullanici_sec_button, 2)
 
         kod_sec_label = QtWidgets.QLabel("Bölüm Kodu Seç")
         kod_sec_label.setMaximumSize(110, 25)
@@ -88,10 +97,11 @@ class MainWindow(QtWidgets.QMainWindow):
         bottom_hor_layout.addWidget(self.add)
 
         main_layout = QtWidgets.QVBoxLayout()
-        main_layout.addLayout(top_grid_layout, 0)
-        main_layout.addWidget(self.lesson_table, 1)
-        main_layout.addLayout(bottom_grid_layout, 2)
-        main_layout.addLayout(bottom_hor_layout, 3)
+        main_layout.addLayout(user_layout, 0)
+        main_layout.addLayout(top_grid_layout, 1)
+        main_layout.addWidget(self.lesson_table, 2)
+        main_layout.addLayout(bottom_grid_layout, 3)
+        main_layout.addLayout(bottom_hor_layout, 4)
 
         self.central_widget = QtWidgets.QWidget()
         self.central_widget.setLayout(main_layout)
@@ -107,6 +117,12 @@ class MainWindow(QtWidgets.QMainWindow):
         QtCore.QObject.connect(self.add, QtCore.SIGNAL("clicked()"), self.add_lesson)
         QtCore.QObject.connect(self.season_select, QtCore.SIGNAL("clicked()"), self.set_current_season_data)
         QtCore.QObject.connect(self.ders_cikar, QtCore.SIGNAL("clicked()"), self.delete_course)
+        QtCore.QObject.connect(self.kullanici_sec_button, QtCore.SIGNAL("clicked()"), self.set_user_name)
+
+        if not self.data_lesson_table:
+            self.set_user_name()
+            self.data_lesson_table = save_data.read_transcript(self.user_name)
+            self.last_season_data = self.parse_season_name_to_data(list(self.data_lesson_table.keys())[-1])
 
         self.write_transcript_table()
         self.set_seasons_ort()
@@ -233,6 +249,15 @@ class MainWindow(QtWidgets.QMainWindow):
             item = self.lesson_table.takeItem(index, 3)
             item.setText(str(hesaplama[0]))
             self.lesson_table.setItem(index, 3, item)
+
+    def set_user_name(self):
+        self.student_info = StudentInfo()
+        self.student_info.show()
+
+        if self.student_info.exec_() == QtWidgets.QDialog.Accepted:
+            self.student_info.get_transcript_data()
+            self.user_name = self.student_info.user_name
+            self.kullanici_adi_gos_label.setText(self.user_name)
 
     def add_lesson_table(self, dersler, user_edit=False):
         for ders in dersler:
@@ -486,6 +511,13 @@ class MainWindow(QtWidgets.QMainWindow):
                 item.setItemText(item.currentIndex(), new_note)
                 item.setEnabled(False)
                 self.lesson_table.setCellWidget(table_index, 3, item)
+
+    def parse_season_name_to_data(self, season_name):
+        years, donem = season_name.split(" / ")
+        firt_year, secound_year = years.split("-")
+        firt_year = int(firt_year)
+        secound_year = int(secound_year)
+        return [[firt_year, secound_year], donem]
 
 
 if __name__ == "__main__":

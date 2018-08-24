@@ -3,8 +3,10 @@ def genel_ort_hesapla(veri: list, kredi=False):
     top_kredi = 0.0
     top_not = 0.0
     for ders_not in veri:
-        top_kredi += float(ders_not["Kredi"])
-        top_not += float(ders_not["Kredi"]) * not_coz(ders_not["Not"])
+        note = not_coz(ders_not["Not"])
+        if note is not None:
+            top_kredi += float(ders_not["Kredi"])
+            top_not += float(ders_not["Kredi"]) * note
     if top_kredi == 0:
         ortalama = 0
     else:

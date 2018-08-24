@@ -1,6 +1,7 @@
 import curriculums
 import csv
 import os
+import json
 
 
 def save_departments_code() -> bool:
@@ -160,6 +161,28 @@ def read_non_english_course():
     return courses
 
 
+def save_transcript(kullanici_adi, transcript_data):
+    if not os.path.exists("Data/Transcripts"):
+        os.makedirs("Data/Transcripts")
+
+    with open("Data/Transcripts/" + str(kullanici_adi) + ".json", "w") as file:
+        json.dump(transcript_data, file)
+
+    return True
+
+
+def read_transcript(kullanici_adi):
+    path = "Data/Transcripts/" + str(kullanici_adi) + ".json"
+
+    if not os.path.exists(path):
+        return None
+
+    with open(path, "r") as file:
+        transcript_data = json.load(file)
+
+    return transcript_data
+
+
 if __name__ == "__main__":
     a = read_departments_code()
     b = read_depatments_cirriculum("FIZ")
@@ -175,3 +198,4 @@ if __name__ == "__main__":
     print(e)
     print(f)
     print(g)
+    print(read_transcript("test_data"))
