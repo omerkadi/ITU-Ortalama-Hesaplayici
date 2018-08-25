@@ -1,31 +1,24 @@
 import curriculums
-import csv
 import os
-import json
+from json import dump, load
 
 
 def save_departments_code() -> bool:
     data = curriculums.get_departments_code()
-    fieldnames = list(data.keys())
     if not os.path.exists("Data"):
         os.makedirs("Data")
 
-    with open("Data/departments.csv", "w") as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerow(data)
+    with open("Data/departments.json", "w") as file:
+        dump(data, file)
     return True
 
 
 def read_departments_code() -> dict:
-    if not os.path.exists("Data/departments.csv"):
+    if not os.path.exists("Data/departments.json"):
         save_departments_code()
 
-    with open('Data/departments.csv') as csvfile:
-        reader = csv.DictReader(csvfile)
-        departments_code = {}
-        for row in reader:
-            departments_code = dict(row)
+    with open('Data/departments.json') as file:
+        departments_code = load(file)
     return departments_code
 
 
@@ -38,24 +31,17 @@ def save_departments_curriculum(code: str) -> bool:
     if not data:
         return False
     else:
-        fieldnames = data[0].keys()
-        with open("Data/Curriculum/"+code+".csv", "w") as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writeheader()
-            for lst in data:
-                writer.writerow(lst)
+        with open("Data/Curriculum/"+code+".json", "w") as file:
+            dump(data, file)
     return True
 
 
 def read_departments_curriculum(code: str) -> list:
-    data = []
-    if not os.path.exists("Data/Curriculum/" + code + ".csv"):
+    if not os.path.exists("Data/Curriculum/" + code + ".json"):
         save_departments_curriculum(code)
 
-    with open("Data/Curriculum/" + code + ".csv") as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            data.append(dict(row))
+    with open("Data/Curriculum/" + code + ".json") as file:
+        data = load(file)
     return data
 
 
@@ -68,21 +54,17 @@ def save_elective_courses_urls(code: str) -> bool:
     if not data:
         return False
     else:
-        with open("Data/ElectiveCourses/Urls/" + code + ".csv", "w") as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow(data)
+        with open("Data/ElectiveCourses/Urls/" + code + ".json", "w") as file:
+            dump(data, file)
     return True
 
 
 def read_elective_courses_urls(code: str) -> list:
-    data = []
-    if not os.path.exists("Data/ElectiveCourses/Urls/" + code + ".csv"):
+    if not os.path.exists("Data/ElectiveCourses/Urls/" + code + ".json"):
         save_elective_courses_urls(code)
 
-    with open("Data/ElectiveCourses/Urls/" + code + ".csv") as csvfile:
-        reader = csv.reader(csvfile)
-        for row in reader:
-            data = row
+    with open("Data/ElectiveCourses/Urls/" + code + ".json") as file:
+        data = load(file)
     return data
 
 
@@ -95,24 +77,17 @@ def save_elective_courses(code: str) -> bool:
     if not data:
         return False
     else:
-        fieldnames = list(data[0].keys())
-        with open("Data/ElectiveCourses/" + code + ".csv", "w") as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writeheader()
-            for ders in data:
-                writer.writerow(ders)
+        with open("Data/ElectiveCourses/" + code + ".json", "w") as file:
+            dump(data, file)
     return True
 
 
 def read_elective_courses(code: str) -> list:
-    data = []
-    if not os.path.exists("Data/ElectiveCourses/" + code + ".csv"):
+    if not os.path.exists("Data/ElectiveCourses/" + code + ".json"):
         save_elective_courses(code)
 
-    with open("Data/ElectiveCourses/" + code + ".csv") as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            data.append(dict(row))
+    with open("Data/ElectiveCourses/" + code + ".json") as file:
+        data = load(file)
     return data
 
 
@@ -123,41 +98,29 @@ def save_verify_departments_code() -> bool:
     if not os.path.exists("Data/"):
         os.makedirs("Data")
 
-    fieldnames = list(verified_departments.keys())
-    with open("Data/verified_departments.csv", "w") as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerow(verified_departments)
+    with open("Data/verified_departments.json", "w") as file:
+        dump(verified_departments, file)
     return True
 
 
 def read_verify_departments_code() -> dict:
-    if not os.path.exists("Data/verified_departments.csv"):
+    if not os.path.exists("Data/verified_departments.json"):
         save_verify_departments_code()
 
-    with open('Data/verified_departments.csv') as csvfile:
-        reader = csv.DictReader(csvfile)
-        departments_code = {}
-        for row in reader:
-            departments_code = dict(row)
+    with open('Data/verified_departments.json') as file:
+        departments_code = load(file)
     return departments_code
 
 
 def read_old_courses():
-    with open("Data/old_courses.csv") as csvfile:
-        reader = csv.DictReader(csvfile)
-        old_courses = {}
-        for row in reader:
-            old_courses = dict(row)
-        return old_courses
+    with open("Data/old_courses.json") as file:
+        old_courses = load(file)
+    return old_courses
 
 
 def read_non_english_courses():
-    courses = []
-    with open("Data/Non-English Courses.csv") as csvfile:
-        reader = csv.reader(csvfile)
-        for row in reader:
-            courses = row
+    with open("Data/non-english_courses.json") as file:
+        courses = load(file)
     return courses
 
 
@@ -166,7 +129,7 @@ def save_transcript(user_name, transcript_data):
         os.makedirs("Data/Transcripts")
 
     with open("Data/Transcripts/" + str(user_name) + ".json", "w") as file:
-        json.dump(transcript_data, file)
+        dump(transcript_data, file)
 
     return True
 
@@ -178,7 +141,7 @@ def read_transcript(user_name):
         return None
 
     with open(path, "r") as file:
-        transcript_data = json.load(file)
+        transcript_data = load(file)
 
     return transcript_data
 

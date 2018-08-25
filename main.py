@@ -241,14 +241,14 @@ class MainWindow(QtWidgets.QMainWindow):
             data = []
             for course in self.data_course_table[name]:
                 data.append({"Kredi": course["Kredi"], "Not": course["Not"]})
-            calculations = calculations.calculate_gpa(data, credit=True)
+            gpa_calculations = calculations.calculate_gpa(data, credit=True)
 
             item = self.course_table.takeItem(index, 2)
-            item.setText(str(calculations[1]))
+            item.setText(str(gpa_calculations[1]))
             self.course_table.setItem(index, 2, item)
 
             item = self.course_table.takeItem(index, 3)
-            item.setText(str(calculations[0]))
+            item.setText(str(gpa_calculations[0]))
             self.course_table.setItem(index, 3, item)
 
     def set_user_name(self):
