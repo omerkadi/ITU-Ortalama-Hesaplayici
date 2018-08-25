@@ -256,7 +256,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.student_info.show()
 
         if self.student_info.exec_() == QtWidgets.QDialog.Accepted:
-            self.student_info.get_transcript_data()
             self.user_name = self.student_info.user_name
             self.user_name_show_label.setText(self.user_name)
 

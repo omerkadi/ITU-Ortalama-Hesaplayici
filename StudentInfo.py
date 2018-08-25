@@ -17,6 +17,9 @@ class StudentInfo(QtWidgets.QDialog):
         self.button_box = QtWidgets.QDialogButtonBox()
         self.button_box.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok)
 
+        self.button_box2 = QtWidgets.QDialogButtonBox()
+        self.button_box2.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok)
+
         self.existing_user_button = QtWidgets.QPushButton("Var Olan Transkrip Seç")
         self.new_user_button = QtWidgets.QPushButton("Yeni Transkrip Seç")
 
@@ -64,8 +67,10 @@ class StudentInfo(QtWidgets.QDialog):
         QtCore.QObject.connect(self.import_button, QtCore.SIGNAL("clicked()"), self.set_import)
         QtCore.QObject.connect(self.transcript_sec_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
                                self.set_user_name_by_transcript_cbox)
-        QtCore.QObject.connect(self.button_box, QtCore.SIGNAL("accepted()"), self.accept)
-        QtCore.QObject.connect(self.button_box, QtCore.SIGNAL("rejected()"), self.reject)
+        QtCore.QObject.connect(self.button_box, QtCore.SIGNAL("accepted()"), self.set_new_user_accept)
+        QtCore.QObject.connect(self.button_box, QtCore.SIGNAL("rejected()"), self.set_new_user_reject)
+        QtCore.QObject.connect(self.button_box2, QtCore.SIGNAL("accepted()"), self.set_existing_user_accept)
+        QtCore.QObject.connect(self.button_box2, QtCore.SIGNAL("rejected()"), self.set_existing_user_reject)
 
         self.file_dialog = QtWidgets.QFileDialog()
         self.file_dialog.setFileMode(QtWidgets.QFileDialog.AnyFile)
@@ -88,10 +93,23 @@ class StudentInfo(QtWidgets.QDialog):
             self.transcript_sec_cbox.addItem(trans.split(".")[0])
 
         self.main_layout.addLayout(self.grid_layout2, 3)
-        self.main_layout.addWidget(self.button_box, 4)
+        self.main_layout.addWidget(self.button_box2, 4)
 
     def set_user_name_by_transcript_cbox(self):
         self.user_name = self.transcript_sec_cbox.currentText()
+
+    def set_new_user_accept(self):
+        self.get_transcript_data()
+        self.accept()
+
+    def set_new_user_reject(self):
+        self.reject()
+
+    def set_existing_user_accept(self):
+        self.accept()
+
+    def set_existing_user_reject(self):
+        self.reject()
 
     def set_export(self):
         pass
