@@ -7,8 +7,8 @@ from transcript import edit_transcript_data, parse_transcript_data
 
 
 class StudentInfo(QtWidgets.QDialog):
-    def __init__(self, patent=None):
-        super(StudentInfo, self).__init__(patent)
+    def __init__(self, parent=None):
+        super(StudentInfo, self).__init__(parent)
 
         self.user_name = ""
 
@@ -34,7 +34,9 @@ class StudentInfo(QtWidgets.QDialog):
         self.student_pin_line_edit = QtWidgets.QLineEdit()
         self.student_pin_line_edit.setEchoMode(QtWidgets.QLineEdit.Password)
 
-        self.grid_layout1 = QtWidgets.QGridLayout()
+        self.grid_layout1_widget = QtWidgets.QWidget()
+
+        self.grid_layout1 = QtWidgets.QGridLayout(self.grid_layout1_widget)
         self.grid_layout1.addWidget(user_name_label, 0, 0)
         self.grid_layout1.addWidget(self.user_name_line_edit, 0, 1)
         self.grid_layout1.addWidget(password_label, 1, 0)
@@ -43,21 +45,29 @@ class StudentInfo(QtWidgets.QDialog):
         self.grid_layout1.addWidget(self.student_number_line_edit, 2, 1)
         self.grid_layout1.addWidget(student_pin_label, 3, 0)
         self.grid_layout1.addWidget(self.student_pin_line_edit, 3, 1)
+        self.grid_layout1.addWidget(self.button_box, 4, 1)
 
         transcript_sec_label = QtWidgets.QLabel("Transkript Seç")
         self.transcript_sec_cbox = QtWidgets.QComboBox()
         self.export_button = QtWidgets.QPushButton("Dışa Aktar")
         self.import_button = QtWidgets.QPushButton("İçe Aktar")
 
-        self.grid_layout2 = QtWidgets.QGridLayout()
+        self.grid_layout2_widget = QtWidgets.QWidget()
+
+        self.grid_layout2 = QtWidgets.QGridLayout(self.grid_layout2_widget)
         self.grid_layout2.addWidget(transcript_sec_label, 0, 0)
         self.grid_layout2.addWidget(self.transcript_sec_cbox, 0, 1)
         self.grid_layout2.addWidget(self.export_button, 1, 0)
         self.grid_layout2.addWidget(self.import_button, 1, 1)
+        self.grid_layout2.addWidget(self.button_box2, 2, 1)
 
         self.main_layout = QtWidgets.QVBoxLayout()
         self.main_layout.addWidget(self.existing_user_button, 0)
         self.main_layout.addWidget(self.new_user_button, 1)
+        self.main_layout.addWidget(self.grid_layout1_widget, 2)
+        self.main_layout.addWidget(self.grid_layout2_widget, 3)
+        self.grid_layout1_widget.setVisible(False)
+        self.grid_layout2_widget.setVisible(False)
 
         self.setLayout(self.main_layout)
 
@@ -79,21 +89,21 @@ class StudentInfo(QtWidgets.QDialog):
     def set_new_user_button(self):
         self.existing_user_button.hide()
         self.new_user_button.hide()
+        self.grid_layout2_widget.setVisible(False)
 
-        self.main_layout.addLayout(self.grid_layout1, 3)
-        self.main_layout.addWidget(self.button_box, 4)
+        self.grid_layout1_widget.setVisible(True)
 
     def set_existing_user_button(self):
         self.existing_user_button.hide()
         self.new_user_button.hide()
+        self.grid_layout1_widget.setVisible(False)
 
         transcripts = listdir("Data/Transcripts")
 
         for trans in transcripts:
             self.transcript_sec_cbox.addItem(trans.split(".")[0])
 
-        self.main_layout.addLayout(self.grid_layout2, 3)
-        self.main_layout.addWidget(self.button_box2, 4)
+        self.grid_layout2_widget.setVisible(True)
 
     def set_user_name_by_transcript_cbox(self):
         self.user_name = self.transcript_sec_cbox.currentText()
@@ -133,6 +143,12 @@ class StudentInfo(QtWidgets.QDialog):
         save_transcript(user_name, edit_transcript_data(*parse_transcript_data(transcript_data.text)))
 
         self.user_name = user_name
+
+    def reset_student_info(self):
+        self.existing_user_button.show()
+        self.new_user_button.show()
+        self.grid_layout1_widget.setVisible(False)
+        self.grid_layout2_widget.setVisible(False)
 
 
 if __name__ == "__main__":

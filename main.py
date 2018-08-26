@@ -61,10 +61,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.course_table = QtWidgets.QTableWidget()
         self.course_table.setColumnCount(4)
-        self.course_table.setHorizontalHeaderItem(0, QtWidgets.QTableWidgetItem("Ders Kodu"))
-        self.course_table.setHorizontalHeaderItem(1, QtWidgets.QTableWidgetItem("Ders İsmi"))
-        self.course_table.setHorizontalHeaderItem(2, QtWidgets.QTableWidgetItem("Kredi"))
-        self.course_table.setHorizontalHeaderItem(3, QtWidgets.QTableWidgetItem("Not"))
         self.course_table.setFixedWidth(438)
 
         course_code_label = QtWidgets.QLabel("Ders Kodu")
@@ -118,23 +114,21 @@ class MainWindow(QtWidgets.QMainWindow):
         QtCore.QObject.connect(self.add, QtCore.SIGNAL("clicked()"), self.add_course)
         QtCore.QObject.connect(self.season_select, QtCore.SIGNAL("clicked()"), self.set_current_season_data)
         QtCore.QObject.connect(self.remove_course, QtCore.SIGNAL("clicked()"), self.delete_course)
-        QtCore.QObject.connect(self.user_select_button, QtCore.SIGNAL("clicked()"), self.set_user_name)
+        QtCore.QObject.connect(self.user_select_button, QtCore.SIGNAL("clicked()"), self.get_transcript_data)
 
         if not self.data_course_table:
-            self.set_user_name()
-            self.data_course_table = save_data.read_transcript(self.user_name)
-            self.last_season_data = self.parse_season_name_to_data(list(self.data_course_table.keys())[-1])
-
-        self.write_transcript_table()
-        self.set_seasons_ort()
-        self.set_education_year_cbox()
-        self.set_education_season_cbox()
+            self.get_transcript_data()
+        else:
+            self.write_transcript_table()
+            self.set_seasons_ort()
+            self.set_education_year_cbox()
+            self.set_education_season_cbox()
+            self.set_gpa_show_label()
 
         for grades in ["AA", "BA", "BB", "CB", "CC", "DC", "DD", "FF", "VF"]:
             self.grade_cbox.addItem(grades)
 
         self.set_code_select_cbox(save_data.read_verify_departments_code())
-        self.set_gpa_show_label()
 
     def read_course_code_cbox(self):
         return self.course_code_cbox.currentText()
@@ -251,13 +245,23 @@ class MainWindow(QtWidgets.QMainWindow):
             item.setText(str(gpa_calculations[0]))
             self.course_table.setItem(index, 3, item)
 
-    def set_user_name(self):
+    def get_transcript_data(self):
         self.student_info = StudentInfo()
+        self.student_info.reset_student_info()
         self.student_info.show()
 
         if self.student_info.exec_() == QtWidgets.QDialog.Accepted:
             self.user_name = self.student_info.user_name
             self.user_name_show_label.setText(self.user_name)
+
+            self.data_course_table = save_data.read_transcript(self.user_name)
+            self.last_season_data = self.parse_season_name_to_data(list(self.data_course_table.keys())[-1])
+
+            self.write_transcript_table()
+            self.set_seasons_ort()
+            self.set_education_year_cbox()
+            self.set_education_season_cbox()
+            self.set_gpa_show_label()
 
     def add_course_table(self, courses, user_edit=False):
         for course in courses:
@@ -380,6 +384,19 @@ class MainWindow(QtWidgets.QMainWindow):
         return False
 
     def write_transcript_table(self):
+        self.course_table.clear()
+
+        self.number_of_courses = 0
+        self.seasons_index = {}
+        self.banned_row_number = 0
+
+        self.course_table.setRowCount(0)
+
+        self.course_table.setHorizontalHeaderItem(0, QtWidgets.QTableWidgetItem("Ders Kodu"))
+        self.course_table.setHorizontalHeaderItem(1, QtWidgets.QTableWidgetItem("Ders İsmi"))
+        self.course_table.setHorizontalHeaderItem(2, QtWidgets.QTableWidgetItem("Kredi"))
+        self.course_table.setHorizontalHeaderItem(3, QtWidgets.QTableWidgetItem("Not"))
+
         for season, season_courses in self.data_course_table.items():
             self.add_season_table(transcript.parse_season_name(season))
             self.add_course_table(season_courses)
