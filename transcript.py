@@ -58,5 +58,44 @@ def get_last_season(user_name):
     return parse_season_name(seasons_name[-1])
 
 
+def is_transcript(transcript_data):
+    if not type(transcript_data) == dict:
+        return False
+
+    seasons = list(transcript_data.keys())
+
+    for season in seasons:
+        if not is_season_name(season):
+            return False
+        for course in transcript_data[season]:
+            course_keys = list(course.keys())
+            if course_keys != ["Ders Kodu", "Ders Adı", "Kredi", "Not"]:
+                return False
+
+            try:
+                float(course["Kredi"])
+            except ValueError:
+                return False
+    return True
+
+
+def is_season_name(season_name):
+    if not type(season_name) == str:
+        return False
+
+    try:
+        season_data = parse_season_name(season_name)
+    except IndexError:
+        return False
+    except ValueError:
+        return False
+
+    if len(str(season_data[0][0])) != 4 or len(str(season_data[0][1])) != 4 or season_data[1] not in ["Güz", "Bahar",
+                                                                                                      "Yaz Öğretimi"]:
+        return False
+
+    return True
+
+
 if __name__ == "__main__":
     pass

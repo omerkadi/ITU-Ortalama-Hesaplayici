@@ -4,7 +4,7 @@ from json import load
 
 import loginSis
 from save_data import save_transcript
-from transcript import edit_transcript_data, parse_transcript_data
+from transcript import edit_transcript_data, parse_transcript_data, is_transcript
 
 
 class StudentInfo(QtWidgets.QDialog):
@@ -74,7 +74,7 @@ class StudentInfo(QtWidgets.QDialog):
 
         QtCore.QObject.connect(self.existing_user_button, QtCore.SIGNAL("clicked()"), self.set_existing_user_button)
         QtCore.QObject.connect(self.new_user_button, QtCore.SIGNAL("clicked()"), self.set_new_user_button)
-        QtCore.QObject.connect(self.open_button, QtCore.SIGNAL("clicked()"), self.set_import)
+        QtCore.QObject.connect(self.open_button, QtCore.SIGNAL("clicked()"), self.open_transcript)
         QtCore.QObject.connect(self.transcript_sec_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
                                self.set_user_name_by_transcript_cbox)
         QtCore.QObject.connect(self.button_box, QtCore.SIGNAL("accepted()"), self.set_new_user_accept)
@@ -121,17 +121,21 @@ class StudentInfo(QtWidgets.QDialog):
     def set_existing_user_reject(self):
         self.reject()
 
-    def set_import(self):
+    def open_transcript(self):
         file_name, _ = QtWidgets.QFileDialog.getOpenFileName(self, "Open Transcript", '', "(*.json)")
 
         if not file_name:
             return None
 
         with open(file_name, "r") as file:
-            self.transcript_data = load(file)
+            data = load(file)
 
+        if not is_transcript(data):
+            QtWidgets.QMessageBox.information(self, "Hata", "Bu dosya bir transcript değil.", QtWidgets.QMessageBox.Ok)
+            return
+
+        self.transcript_data = data
         self.user_name = file_name.split("/")[-1].split(".")[0]
-
         self.accept()
 
     def get_transcript_data(self):
