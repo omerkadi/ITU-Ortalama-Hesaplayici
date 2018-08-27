@@ -13,6 +13,7 @@ class StudentInfo(QtWidgets.QDialog):
         self.user_name = ""
 
         self.setFixedSize(350, 180)
+        self.setWindowTitle("Transcript Seç")
 
         self.button_box = QtWidgets.QDialogButtonBox()
         self.button_box.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok)

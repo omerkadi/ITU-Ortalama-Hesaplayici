@@ -29,7 +29,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         user_name_label = QtWidgets.QLabel("Kullanıcı adı:")
         self.user_name_show_label = QtWidgets.QLabel("")
-        self.user_select_button = QtWidgets.QPushButton("Kullanıcı Seç")
+        self.user_select_button = QtWidgets.QPushButton("Transcript Yükle")
 
         user_layout = QtWidgets.QHBoxLayout()
         user_layout.addWidget(user_name_label, 0)
@@ -290,21 +290,21 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def add_course(self):
         if not self.current_season_data:
-            self.create_message_box("Önce Dönem Seçin!")
+            QtWidgets.QMessageBox.information(self, "Hata", "Önce Dönem Seçin!", QtWidgets.QMessageBox.Ok)
         else:
             course_code = self.read_course_code_cbox()
             if course_code == "Seç":
-                self.create_message_box("Ders Kodu Seçin")
+                QtWidgets.QMessageBox.information(self, "Hata", "Ders Kodu Seçin", QtWidgets.QMessageBox.Ok)
                 return False
 
             course_num = self.read_course_num_cbox()
             if course_num == "Seç":
-                self.create_message_box("Ders No Seçin")
+                QtWidgets.QMessageBox.information(self, "Hata", "Ders No Seçin", QtWidgets.QMessageBox.Ok)
                 return False
 
             course_grade = self.read_grade_cbox()
             if course_grade == "Seç":
-                self.create_message_box("Ders Notu Seçin")
+                QtWidgets.QMessageBox.information(self, "Hata", "Ders Notu Seçin", QtWidgets.QMessageBox.Ok)
                 return False
 
             season = self.convert_to_string_season_data(self.current_season_data)
@@ -312,7 +312,8 @@ class MainWindow(QtWidgets.QMainWindow):
             course_data["Not"] = course_grade
 
             if self.check_course_before_added_current_season(course_data):
-                self.create_message_box("Bir Dersi Aynı Döneme İki Kere Ekleyemezsiniz")
+                QtWidgets.QMessageBox.information(self, "Hata", "Bir Dersi Aynı Döneme İki Kere Ekleyemezsiniz",
+                                                  QtWidgets.QMessageBox.Ok)
                 return False
 
             self.add_course_table([course_data], user_edit=True)
@@ -476,14 +477,8 @@ class MainWindow(QtWidgets.QMainWindow):
             self.set_seasons_index()
             self.set_seasons_ort()
         else:
-            self.create_message_box("Bu Satırı Kaldıramzsınız")
-
-    @staticmethod
-    def create_message_box(message):
-        msg_box = QtWidgets.QMessageBox()
-        msg_box.setText(str(message))
-        msg_box.setStandardButtons(QtWidgets.QMessageBox.Ok)
-        msg_box.exec_()
+            QtWidgets.QMessageBox.information(self, "Hata", "Bu Satırı Kaldıramazsınız",
+                                              QtWidgets.QMessageBox.Ok)
 
     def update_courses_data_from_note_cbox(self):
         self.update_data_course_table()
