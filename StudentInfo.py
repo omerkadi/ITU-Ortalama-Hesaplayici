@@ -1,5 +1,6 @@
 from PySide2 import QtWidgets, QtCore
 from os import listdir
+from json import load
 
 import loginSis
 from save_data import save_transcript
@@ -11,6 +12,7 @@ class StudentInfo(QtWidgets.QDialog):
         super(StudentInfo, self).__init__(parent)
 
         self.user_name = ""
+        self.transcript_data = {}
 
         self.setFixedSize(350, 180)
         self.setWindowTitle("Transcript Seç")
@@ -50,16 +52,14 @@ class StudentInfo(QtWidgets.QDialog):
 
         transcript_sec_label = QtWidgets.QLabel("Transkript Seç")
         self.transcript_sec_cbox = QtWidgets.QComboBox()
-        self.export_button = QtWidgets.QPushButton("Dışa Aktar")
-        self.import_button = QtWidgets.QPushButton("İçe Aktar")
+        self.open_button = QtWidgets.QPushButton("Transcript Aç")
 
         self.grid_layout2_widget = QtWidgets.QWidget()
 
         self.grid_layout2 = QtWidgets.QGridLayout(self.grid_layout2_widget)
         self.grid_layout2.addWidget(transcript_sec_label, 0, 0)
         self.grid_layout2.addWidget(self.transcript_sec_cbox, 0, 1)
-        self.grid_layout2.addWidget(self.export_button, 1, 0)
-        self.grid_layout2.addWidget(self.import_button, 1, 1)
+        self.grid_layout2.addWidget(self.open_button, 1, 1)
         self.grid_layout2.addWidget(self.button_box2, 2, 1)
 
         self.main_layout = QtWidgets.QVBoxLayout()
@@ -74,8 +74,7 @@ class StudentInfo(QtWidgets.QDialog):
 
         QtCore.QObject.connect(self.existing_user_button, QtCore.SIGNAL("clicked()"), self.set_existing_user_button)
         QtCore.QObject.connect(self.new_user_button, QtCore.SIGNAL("clicked()"), self.set_new_user_button)
-        QtCore.QObject.connect(self.export_button, QtCore.SIGNAL("clicked()"), self.set_export)
-        QtCore.QObject.connect(self.import_button, QtCore.SIGNAL("clicked()"), self.set_import)
+        QtCore.QObject.connect(self.open_button, QtCore.SIGNAL("clicked()"), self.set_import)
         QtCore.QObject.connect(self.transcript_sec_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
                                self.set_user_name_by_transcript_cbox)
         QtCore.QObject.connect(self.button_box, QtCore.SIGNAL("accepted()"), self.set_new_user_accept)
@@ -122,12 +121,18 @@ class StudentInfo(QtWidgets.QDialog):
     def set_existing_user_reject(self):
         self.reject()
 
-    def set_export(self):
-        pass
-
     def set_import(self):
-        self.file_dialog.show()
-        pass
+        file_name, _ = QtWidgets.QFileDialog.getOpenFileName(self, "Open Transcript", '', "(*.json)")
+
+        if not file_name:
+            return None
+
+        with open(file_name, "r") as file:
+            self.transcript_data = load(file)
+
+        self.user_name = file_name.split("/")[-1].split(".")[0]
+
+        self.accept()
 
     def get_transcript_data(self):
         user_name = self.user_name_line_edit.text()
@@ -146,6 +151,8 @@ class StudentInfo(QtWidgets.QDialog):
         self.user_name = user_name
 
     def reset_student_info(self):
+        self.user_name = ""
+        self.transcript_data = {}
         self.existing_user_button.show()
         self.new_user_button.show()
         self.grid_layout1_widget.setVisible(False)

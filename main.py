@@ -253,8 +253,10 @@ class MainWindow(QtWidgets.QMainWindow):
         if self.student_info.exec_() == QtWidgets.QDialog.Accepted:
             self.user_name = self.student_info.user_name
             self.user_name_show_label.setText(self.user_name)
-
-            self.data_course_table = save_data.read_transcript(self.user_name)
+            if self.student_info.transcript_data:
+                self.data_course_table = self.student_info.transcript_data
+            else:
+                self.data_course_table = save_data.read_transcript(self.user_name)
             self.last_season_data = self.parse_season_name_to_data(list(self.data_course_table.keys())[-1])
 
             self.write_transcript_table()
