@@ -22,10 +22,21 @@ class MainWindow(QtWidgets.QMainWindow):
         self.old_courses = save_data.read_old_courses()
         self.user_name = ""
         self.student_info = None
+        self.file_directory = None
 
         self.resize(510, 700)
         self.setFixedWidth(510)
         self.setWindowFlags(QtCore.Qt.WindowCloseButtonHint | QtCore.Qt.WindowMinimizeButtonHint)
+
+        self.menu_bar = QtWidgets.QMenuBar()
+
+        self.file_menu = QtWidgets.QMenu("Dosya")
+        self.open = self.file_menu.addAction("Aç")
+        self.save = self.file_menu.addAction("Kaydet")
+        self.save_as = self.file_menu.addAction("Farklı Kaydet")
+
+        self.menu_bar.addMenu(self.file_menu)
+        self.setMenuBar(self.menu_bar)
 
         user_name_label = QtWidgets.QLabel("Kullanıcı adı:")
         self.user_name_show_label = QtWidgets.QLabel("")
@@ -115,6 +126,9 @@ class MainWindow(QtWidgets.QMainWindow):
         QtCore.QObject.connect(self.season_select, QtCore.SIGNAL("clicked()"), self.set_current_season_data)
         QtCore.QObject.connect(self.remove_course, QtCore.SIGNAL("clicked()"), self.delete_course)
         QtCore.QObject.connect(self.user_select_button, QtCore.SIGNAL("clicked()"), self.get_transcript_data)
+        QtCore.QObject.connect(self.save, QtCore.SIGNAL("triggered()"), self.save_transcript)
+        QtCore.QObject.connect(self.save_as, QtCore.SIGNAL("triggered()"), self.save_as_transcript)
+        QtCore.QObject.connect(self.open, QtCore.SIGNAL("triggered()"), self.open_transcript)
 
         if not self.data_course_table:
             self.get_transcript_data()
@@ -253,6 +267,7 @@ class MainWindow(QtWidgets.QMainWindow):
         if self.student_info.exec_() == QtWidgets.QDialog.Accepted:
             self.user_name = self.student_info.user_name
             self.user_name_show_label.setText(self.user_name)
+            self.file_directory = "./Data/Transcripts/" + self.user_name + ".json"
             if self.student_info.transcript_data:
                 self.data_course_table = self.student_info.transcript_data
             else:
@@ -538,6 +553,56 @@ class MainWindow(QtWidgets.QMainWindow):
 
         season = parsed[1]
         return [years, season]
+
+    def save_transcript(self):
+        if self.file_directory is None:
+            file_directory, _ = QtWidgets.QFileDialog.getSaveFileName(self, "Transcript Kaydet",
+                                                                           "./Data/Transcripts", "(*.json)")
+            if file_directory is None:
+                return
+
+            self.file_directory = file_directory
+            if self.file_directory[-5:] != ".json":
+                self.file_directory = self.file_directory + ".json"
+
+    def save_as_transcript(self):
+        file_directory, _ = QtWidgets.QFileDialog.getSaveFileName(self, "Transcript Kaydet",
+                                                                  QtCore.QDir.homePath(), "(*.json)")
+
+        if file_directory is "":
+            return
+
+        if self.file_directory[-5:] != ".json":
+            self.file_directory = self.file_directory + ".json"
+
+        save_data.save_transcript(self.data_course_table, directory=self.file_directory)
+
+        self.user_name = self.file_directory.split("/")[-1].split(".")[0]
+        self.user_name_show_label.setText(self.user_name)
+
+    def open_transcript(self):
+        file_name, _ = QtWidgets.QFileDialog.getOpenFileName(self, "Open Transcript",
+                                                             "./Data/Transcripts", "(*.json)")
+
+        if not file_name:
+            return None
+
+        data = save_data.read_transcript(directory=file_name)
+
+        if not transcript.is_transcript(data):
+            QtWidgets.QMessageBox.information(self, "Hata", "Bu dosya bir transcript değil.", QtWidgets.QMessageBox.Ok)
+            return
+
+        self.file_directory = file_name
+        self.data_course_table = data
+        self.user_name = file_name.split("/")[-1].split(".")[0]
+        self.last_season_data = self.parse_season_name_to_data(list(self.data_course_table.keys())[-1])
+
+        self.write_transcript_table()
+        self.set_seasons_ort()
+        self.set_education_year_cbox()
+        self.set_education_season_cbox()
+        self.set_gpa_show_label()
 
 
 if __name__ == "__main__":

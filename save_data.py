@@ -124,24 +124,32 @@ def read_non_english_courses():
     return courses
 
 
-def save_transcript(user_name, transcript_data):
-    if not os.path.exists("Data/Transcripts"):
-        os.makedirs("Data/Transcripts")
+def save_transcript(transcript_data, user_name=None, directory=None):
+    if dir is not None:
+        with open(directory, "w") as file:
+            dump(transcript_data, file)
+    else:
+        if not os.path.exists("Data/Transcripts"):
+            os.makedirs("Data/Transcripts")
 
-    with open("Data/Transcripts/" + str(user_name) + ".json", "w") as file:
-        dump(transcript_data, file)
+        with open("Data/Transcripts/" + str(user_name) + ".json", "w") as file:
+            dump(transcript_data, file)
 
     return True
 
 
-def read_transcript(user_name):
-    path = "Data/Transcripts/" + str(user_name) + ".json"
+def read_transcript(user_name=None, directory=None):
+    if directory is not None:
+        with open(directory, "r") as file:
+            transcript_data = load(file)
+    else:
+        path = "Data/Transcripts/" + str(user_name) + ".json"
 
-    if not os.path.exists(path):
-        return None
+        if not os.path.exists(path):
+            return None
 
-    with open(path, "r") as file:
-        transcript_data = load(file)
+        with open(path, "r") as file:
+            transcript_data = load(file)
 
     return transcript_data
 

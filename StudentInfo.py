@@ -150,7 +150,7 @@ class StudentInfo(QtWidgets.QDialog):
         elif transcript_data == 2:
             return 2
 
-        save_transcript(user_name, edit_transcript_data(*parse_transcript_data(transcript_data.text)))
+        save_transcript(edit_transcript_data(*parse_transcript_data(transcript_data.text)), user_name)
 
         self.user_name = user_name
 
