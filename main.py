@@ -572,6 +572,7 @@ class MainWindow(QtWidgets.QMainWindow):
         if file_directory is "":
             return
 
+        self.file_directory = file_directory
         if self.file_directory[-5:] != ".json":
             self.file_directory = self.file_directory + ".json"
 

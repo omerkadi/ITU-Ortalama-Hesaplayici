@@ -125,7 +125,7 @@ def read_non_english_courses():
 
 
 def save_transcript(transcript_data, user_name=None, directory=None):
-    if dir is not None:
+    if directory is not None:
         with open(directory, "w") as file:
             dump(transcript_data, file)
     else:
