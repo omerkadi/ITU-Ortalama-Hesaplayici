@@ -1,10 +1,9 @@
 from PySide2 import QtWidgets, QtCore
 from os import listdir
-from json import load
 
 import loginSis
-from save_data import save_transcript
-from transcript import edit_transcript_data, parse_transcript_data, is_transcript
+from save_data import save_transcript_to_db
+from transcript import parse_transcript_data
 
 
 class StudentInfo(QtWidgets.QDialog):
@@ -12,6 +11,7 @@ class StudentInfo(QtWidgets.QDialog):
         super(StudentInfo, self).__init__(parent)
 
         self.user_name = ""
+        self.path = ""
         self.transcript_data = {}
 
         self.setFixedSize(350, 180)
@@ -78,13 +78,13 @@ class StudentInfo(QtWidgets.QDialog):
         QtCore.QObject.connect(self.transcript_sec_cbox, QtCore.SIGNAL("currentIndexChanged(QString)"),
                                self.set_user_name_by_transcript_cbox)
         QtCore.QObject.connect(self.button_box, QtCore.SIGNAL("accepted()"), self.set_new_user_accept)
-        QtCore.QObject.connect(self.button_box, QtCore.SIGNAL("rejected()"), self.set_new_user_reject)
+        QtCore.QObject.connect(self.button_box, QtCore.SIGNAL("rejected()"), self.reset_student_info)
         QtCore.QObject.connect(self.button_box2, QtCore.SIGNAL("accepted()"), self.set_existing_user_accept)
-        QtCore.QObject.connect(self.button_box2, QtCore.SIGNAL("rejected()"), self.set_existing_user_reject)
+        QtCore.QObject.connect(self.button_box2, QtCore.SIGNAL("rejected()"), self.reset_student_info)
 
         self.file_dialog = QtWidgets.QFileDialog()
         self.file_dialog.setFileMode(QtWidgets.QFileDialog.AnyFile)
-        self.file_dialog.setNameFilter("*.json")
+        self.file_dialog.setNameFilter("*.db")
 
     def set_new_user_button(self):
         self.existing_user_button.hide()
@@ -112,30 +112,19 @@ class StudentInfo(QtWidgets.QDialog):
         self.get_transcript_data()
         self.accept()
 
-    def set_new_user_reject(self):
-        self.reject()
-
     def set_existing_user_accept(self):
+        self.user_name = self.transcript_sec_cbox.currentText()
+        self.path = "Data/Transcripts/" + self.user_name + ".dp"
         self.accept()
 
-    def set_existing_user_reject(self):
-        self.reject()
-
     def open_transcript(self):
-        file_name, _ = QtWidgets.QFileDialog.getOpenFileName(self, "Open Transcript", '', "(*.json)")
+        file_name, _ = QtWidgets.QFileDialog.getOpenFileName(self, "Open Transcript", '', "(*.dp)")
+        self.user_name = file_name.split("/")[-1].split(".")[0]
+        self.path = file_name
 
         if not file_name:
             return None
 
-        with open(file_name, "r") as file:
-            data = load(file)
-
-        if not is_transcript(data):
-            QtWidgets.QMessageBox.information(self, "Hata", "Bu dosya bir transcript değil.", QtWidgets.QMessageBox.Ok)
-            return
-
-        self.transcript_data = data
-        self.user_name = file_name.split("/")[-1].split(".")[0]
         self.accept()
 
     def get_transcript_data(self):
@@ -143,6 +132,7 @@ class StudentInfo(QtWidgets.QDialog):
         password = self.password_line_edit.text()
         student_number = self.student_number_line_edit.text()
         pin = self.student_pin_line_edit.text()
+
         transcript_data = loginSis.get_transcript_html(user_name, password, student_number, pin)
 
         if transcript_data == 1:
@@ -150,9 +140,10 @@ class StudentInfo(QtWidgets.QDialog):
         elif transcript_data == 2:
             return 2
 
-        save_transcript(edit_transcript_data(*parse_transcript_data(transcript_data.text)), user_name)
+        save_transcript_to_db(parse_transcript_data(transcript_data.text), user_name)
 
         self.user_name = user_name
+        self.path = "Data/Transcripts/" + user_name + ".dp"
 
     def reset_student_info(self):
         self.user_name = ""

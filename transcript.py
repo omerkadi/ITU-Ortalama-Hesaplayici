@@ -5,10 +5,26 @@ from save_data import read_transcript
 def parse_transcript_data(raw_transcript_data):
     soup = bs4.BeautifulSoup(raw_transcript_data, "html.parser")
 
-    season_data = soup.find("div", class_="pagebodydiv").find("tr").find_all("table")[1].\
+    raw_season_data = soup.find("div", class_="pagebodydiv").find("tr").find_all("table")[1]. \
         find_all("td", attrs={"colspan": "2"})
-    courses_data = soup.find("div", class_="pagebodydiv").find("tr").find_all("table")[1].\
+
+    season_data = []
+    for raw_season in raw_season_data:
+        season_data.append(raw_season.text)
+
+    raw_courses_data = soup.find("div", class_="pagebodydiv").find("tr").find_all("table")[1]. \
         find_all("td", attrs={"width": "400"})
+    courses_data = []
+    for raw_seasons_courses in raw_courses_data:
+        season_courses = []
+        for raw_course in raw_seasons_courses.find_all("tr"):
+            course = []
+            for course_data in raw_course.find_all("td"):
+                course.append(course_data.text)
+
+            if course[0] != "Ders Kodu":
+                season_courses.append(course)
+        courses_data.append(season_courses)
 
     return [courses_data, season_data]
 
@@ -40,6 +56,7 @@ def edit_transcript_data(courses_data, seasons_names):
             one_course["Ders Adı"] = course_data[1].text
             one_course["Kredi"] = course_data[2].text.strip()
             one_course["Not"] = course_data[3].text
+            one_course["Free"] = False
 
             edited_transcript_data[season_name].append(one_course)
     return edited_transcript_data
@@ -69,7 +86,7 @@ def is_transcript(transcript_data):
             return False
         for course in transcript_data[season]:
             course_keys = list(course.keys())
-            if course_keys != ["Ders Kodu", "Ders Adı", "Kredi", "Not"]:
+            if course_keys != ["Ders Kodu", "Ders Adı", "Kredi", "Not", "Free"] and type(course["Free"]) == bool:
                 return False
 
             try:

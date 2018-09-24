@@ -1,23 +1,4 @@
 
-def calculate_gpa(data: list, credit=False):
-    credit_sum = 0.0
-    point_sum = 0.0
-    for course in data:
-        grade = solve_grade(course["Not"])
-        if grade is not None:
-            credit_sum += float(course["Kredi"])
-            point_sum += float(course["Kredi"]) * grade
-    if credit_sum == 0:
-        gpa = 0
-    else:
-        gpa = round(point_sum/credit_sum, 2)
-
-    if credit is True:
-        return [gpa, credit_sum]
-    else:
-        return gpa
-
-
 def solve_grade(data: str) -> [float, None]:
 
     if data[:2] == "AA":
@@ -37,4 +18,20 @@ def solve_grade(data: str) -> [float, None]:
     elif data[:2] == "FF" or data[:2] == "VF" or data[:2] == "BL" or data[:2] == "BZ":
         return 0.00
     else:
-        return None
+        return -1.00
+
+
+def calculate_gpa(data):
+    total_credits = 0
+    total_points = 0
+
+    for pair in data:
+        total_credits += pair[0]
+        total_points += pair[0] * pair[1]
+
+    if total_credits == 0:
+        gpa = 0.0
+    else:
+        gpa = total_points/total_credits
+
+    return gpa
