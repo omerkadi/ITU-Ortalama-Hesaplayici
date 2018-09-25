@@ -1,4 +1,5 @@
 from PySide2 import QtCore, QtWidgets, QtGui
+from sys import exit
 
 import save_data
 import curriculums
@@ -17,6 +18,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.selected_department = ""
         self.selectable_courses = {}
         self.current_season = ""
+        self.destroy_app = 0
 
         self.resize(510, 700)
         self.setFixedWidth(510)
@@ -124,6 +126,7 @@ class MainWindow(QtWidgets.QMainWindow):
         QtCore.QObject.connect(self.season_select, QtCore.SIGNAL("clicked()"), self.add_season)
         QtCore.QObject.connect(self.add, QtCore.SIGNAL("clicked()"), self.add_course)
         QtCore.QObject.connect(self.remove_course_button, QtCore.SIGNAL("clicked()"), self.remove_row)
+        QtCore.QObject.connect(self.save, QtCore.SIGNAL("triggered()"), self.transcript.save_connection)
 
         if self.get_transcript_data():
             self.write_transcript_table()
@@ -132,6 +135,21 @@ class MainWindow(QtWidgets.QMainWindow):
             self.set_code_select_cbox(save_data.read_verify_departments_code())
             self.set_grade_cbox()
             self.set_user_name_label()
+        else:
+            exit()
+
+    def closeEvent(self, event):
+        replay = QtWidgets.QMessageBox.question(self, "Exit", "Kaydetmek ister misiniz?",
+                                                QtWidgets.QMessageBox.Cancel | QtWidgets.QMessageBox.No |
+                                                QtWidgets.QMessageBox.Yes)
+
+        if replay == QtWidgets.QMessageBox.Yes:
+            self.transcript.save_connection()
+            self.transcript.close_connection()
+        elif replay == QtWidgets.QMessageBox.No:
+            self.transcript.close_connection()
+        else:
+            event.ignore()
 
     def set_code_select_cbox(self, departments: dict):
         for code in sorted(list(departments.values())):
@@ -396,7 +414,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.student_info.reset_student_info()
         self.student_info.show()
 
-        if self.student_info.exec_() == QtWidgets.QDialog.Accepted:
+        replay = self.student_info.exec_()
+
+        if replay == QtWidgets.QDialog.Accepted:
             self.transcript.set_user_name(self.student_info.user_name)
             self.transcript.set_path(self.student_info.path)
             self.user_name_show_label.setText(self.transcript.user_name)
